@@ -5,3 +5,7 @@
 .font-kodchasan {
   font-family: "Kodchasan", sans-serif;
 }
+
+.primary-button {
+  @apply text-light-grey bg-green-primary hover:bg-green-primary-hover rounded-full font-light text-lg px-5 py-3 text-center me-2 mb-2;
+}
