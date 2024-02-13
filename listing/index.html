@@ -111,54 +111,57 @@
     </header>
     <main>
       <h1>Listing Specific Page</h1>
-      <button
-        onclick="history.back()"
-        class="mt-12 mb-4 ml-6 font-extralight hover:font-normal"
-      >
-        &lt; BACK
-      </button>
+      <div class="flex justify-start max-w-screen-2xl"></div>
       <section
         class="mx-auto mb-10 max-w-screen-2xl w-full sm:w-11/12 flex flex-col justify-center"
       >
+        <button
+          onclick="history.back()"
+          class="mt-12 mb-4 ml-4 sm:ml-0 text-left font-extralight hover:font-normal"
+        >
+          &lt; BACK
+        </button>
         <div class="flex flex-col lg:flex-row">
           <div
             id="indicators-carousel"
             class="relative w-full"
             data-carousel="static"
           >
-            <!-- Carousel wrapper -->
-            <div class="relative h-56 overflow-hidden md:h-96">
-              <!-- Item 1 -->
-              <div
-                class="hidden duration-700 ease-in-out"
-                data-carousel-item="active"
-              >
-                <img
-                  src="../images/comfy-sofa.jpg"
-                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                  alt="..."
-                />
-              </div>
-              <!-- Item 2 -->
-              <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img
-                  src="../images/comfy-sofa.jpg"
-                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                  alt="..."
-                />
-              </div>
-              <!-- Item 3 -->
-              <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img
-                  src="../images/comfy-sofa.jpg"
-                  class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                  alt="..."
-                />
+            <div class="max-h-96">
+              <!-- Carousel wrapper -->
+              <div class="relative h-56 overflow-hidden md:h-96">
+                <!-- Item 1 -->
+                <div
+                  class="hidden duration-700 ease-in-out"
+                  data-carousel-item="active"
+                >
+                  <img
+                    src="../images/comfy-sofa.jpg"
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 2 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <img
+                    src="../images/sofa2.jpg"
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 3 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <img
+                    src="../images/sofa-3.jpg"
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
               </div>
             </div>
             <!-- Slider indicators -->
             <div
-              class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2"
+              class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 lg:bottom-96 left-1/2"
             >
               <button
                 type="button"
@@ -185,7 +188,7 @@
             <!-- Slider controls -->
             <button
               type="button"
-              class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+              class="absolute top-0 start-0 z-30 flex items-center justify-centerx h-full lg:h-96 px-4 cursor-pointer group focus:outline-none"
               data-carousel-prev
             >
               <span
@@ -211,7 +214,7 @@
             </button>
             <button
               type="button"
-              class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+              class="absolute top-0 end-0 z-30 flex items-center justify-center h-full lg:h-96 px-4 cursor-pointer group focus:outline-none"
               data-carousel-next
             >
               <span
