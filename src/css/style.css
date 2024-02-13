@@ -6,6 +6,14 @@
   font-family: "Kodchasan", sans-serif;
 }
 
+.font-size22 {
+  font-size: 22px;
+}
+
 .primary-button {
-  @apply text-light-grey bg-green-primary hover:bg-green-primary-hover rounded-full font-light text-lg px-5 py-3 text-center me-2 mb-2;
+  @apply text-light-grey bg-green-primary hover:bg-green-primary-hover rounded-full font-light text-lg px-5 py-3 text-center mb-2;
+}
+
+.secondary-button {
+  @apply text-green-primary hover:text-light-grey bg-light-grey hover:bg-green-primary-hover border border-green-primary hover:border-green-primary-hover rounded-full font-light text-lg px-5 py-3 text-center mb-2;
 }
