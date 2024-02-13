@@ -6,15 +6,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Kodchasan:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
     <script type="module" src="../src/js/main.js" defer></script>
     <link rel="stylesheet" href="../src/css/style.css" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <title>Profile - BidOnIt</title>
   </head>
-  <body class="bg-light-grey">
+  <body class="bg-light-grey text-darkest-grey">
     <header>
       <nav
         class="bg-light-grey border-light-grey fixed w-full z-20 top-0 start-0 border-b dark:bg-gray-900"
@@ -108,7 +109,14 @@
       </nav>
     </header>
     <main>
-      <h1 class="mt-60">Profile</h1>
+      <section>
+        <h1 class="mt-20 font-kodchasan text-2xl text-center">My profile</h1>
+        <img
+          class="w-72 h-72 object-cover rounded-full mx-auto"
+          src="../images/avatar.jpg"
+          alt="Rounded avatar"
+        />
+      </section>
     </main>
   </body>
 </html>
