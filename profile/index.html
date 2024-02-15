@@ -83,9 +83,9 @@
               </li>
               <li>
                 <a
-                  data-modal-target="listing-modal"
-                  data-modal-toggle="listing-modal"
-                  class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  data-modal-target="new-listing-modal"
+                  data-modal-toggle="new-listing-modal"
+                  class="cursor-pointer block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Add listing</a
                 >
               </li>
@@ -209,15 +209,15 @@
             Credit: <span>$785</span>
           </p>
           <button
-            data-modal-target="listing-modal"
-            data-modal-toggle="listing-modal"
+            data-modal-target="new-listing-modal"
+            data-modal-toggle="new-listing-modal"
             class="flex mx-auto mt-12 primary-button"
           >
             + Add new listing
           </button>
           <!-- Modal New Listing -->
           <div
-            id="listing-modal"
+            id="new-listing-modal"
             data-modal-backdrop="static"
             tabindex="-1"
             aria-hidden="true"
@@ -233,7 +233,7 @@
                   <button
                     type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                    data-modal-hide="listing-modal"
+                    data-modal-hide="new-listing-modal"
                   >
                     <svg
                       class="w-3 h-3"
