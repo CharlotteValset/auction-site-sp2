@@ -9,7 +9,6 @@
       href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-
     <script type="module" src="../src/js/main.js" defer></script>
     <link rel="stylesheet" href="../src/css/style.css" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
@@ -84,7 +83,8 @@
               </li>
               <li>
                 <a
-                  href="../listing/"
+                  data-modal-target="listing-modal"
+                  data-modal-toggle="listing-modal"
                   class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Add listing</a
                 >
@@ -109,43 +109,131 @@
       </nav>
     </header>
     <main>
-      <section>
-        <h1 class="mt-20 font-kodchasan text-2xl text-center">My profile</h1>
-        <div class="flex flex-col justify-center">
-          <img
-            class="w-72 h-72 object-cover rounded-full mx-auto mt-8 mb-2"
-            src="../images/avatar.jpg"
-            alt="Rounded avatar"
-          />
-          <div>
-            <a
-              data-modal-target="static-modal"
-              data-modal-toggle="static-modal"
-              class="flex flex-row justify-center cursor-pointer"
+      <div class="flex flex-col lg:flex-row lg:mx-auto lg:justify-center">
+        <section class="lg:px-10">
+          <h1
+            class="mt-20 lg:mt-32 font-kodchasan text-2xl lg:text-3xl text-center"
+          >
+            My Profile
+          </h1>
+          <div class="flex flex-col justify-center">
+            <img
+              class="w-72 h-72 object-cover rounded-full mx-auto mt-8 mb-2"
+              src="../images/avatar.jpg"
+              alt="Rounded avatar"
+            />
+            <div>
+              <a
+                data-modal-target="static-modal"
+                data-modal-toggle="static-modal"
+                class="flex flex-row justify-center cursor-pointer"
+              >
+                <p class="font-light">Update image</p>
+                <img src="../images/user-edit.svg" alt="" />
+              </a>
+            </div>
+            <!-- Modal -->
+            <div
+              id="static-modal"
+              data-modal-backdrop="static"
+              tabindex="-1"
+              aria-hidden="true"
+              class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
             >
-              <p class="font-light">Update image</p>
-              <img src="../images/user-edit.svg" alt="" />
-            </a>
+              <div class="relative p-4 w-full max-w-md max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow">
+                  <!-- Modal header -->
+                  <div
+                    class="flex items-center justify-between px-4 ps-4 pe-0 rounded-t"
+                  >
+                    <button
+                      type="button"
+                      class="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                      data-modal-hide="static-modal"
+                    >
+                      <svg
+                        class="w-3 h-3"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 14 14"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                        />
+                      </svg>
+                      <span class="sr-only">Close modal</span>
+                    </button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="flex flex-col justify-center">
+                    <h3 class="mx-auto text-xl mb-6">
+                      Update your profile image
+                    </h3>
+                    <form
+                      class="flex flex-col justify-center"
+                      action="/profile/"
+                    >
+                      <label class="form-control w-72 mx-auto">
+                        <div class="label ps-2">
+                          <span class="label-text text-lg font-extralight"
+                            >Profile Image Url</span
+                          >
+                        </div>
+                        <input
+                          type="text"
+                          placeholder=""
+                          class="input input-bordered w-72 max-w-xs mb-8 rounded-full"
+                        />
+                      </label>
+                      <div class="flex justify-center mx-auto mb-8">
+                        <button class="primary-button">Add Image</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <!-- Modal -->
+          <h2
+            class="text-2xl text-green-primary font-semibold text-center mt-8 mb-4"
+          >
+            lisa489
+          </h2>
+          <p class="text-lg text-green-primary text-center">
+            Credit: <span>$785</span>
+          </p>
+          <button
+            data-modal-target="listing-modal"
+            data-modal-toggle="listing-modal"
+            class="flex mx-auto mt-12 primary-button"
+          >
+            + Add new listing
+          </button>
+          <!-- Modal New Listing -->
           <div
-            id="static-modal"
+            id="listing-modal"
             data-modal-backdrop="static"
             tabindex="-1"
             aria-hidden="true"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
           >
             <div class="relative p-4 w-full max-w-md max-h-full">
-              <!-- Modal content -->
-              <div class="relative bg-white rounded-lg shadow">
-                <!-- Modal header -->
+              <!-- Modal add listing content -->
+              <div class="relative bg-light-grey rounded-lg shadow">
+                <!-- Modal add listing header -->
                 <div
                   class="flex items-center justify-between px-4 ps-4 pe-0 rounded-t"
                 >
                   <button
                     type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                    data-modal-hide="static-modal"
+                    data-modal-hide="listing-modal"
                   >
                     <svg
                       class="w-3 h-3"
@@ -165,253 +253,376 @@
                     <span class="sr-only">Close modal</span>
                   </button>
                 </div>
-                <!-- Modal body -->
+                <!-- Modal add listing body -->
                 <div class="flex flex-col justify-center">
-                  <h3 class="mx-auto text-xl mb-6">
-                    Update your profile image
+                  <h3 class="mx-auto text-2xl mb-6 font-kodchasan">
+                    Add new listing
                   </h3>
                   <form class="flex flex-col justify-center" action="/profile/">
                     <label class="form-control w-72 mx-auto">
                       <div class="label ps-2">
                         <span class="label-text text-lg font-extralight"
-                          >Profile Image Url</span
+                          >Title</span
                         >
                       </div>
                       <input
                         type="text"
                         placeholder=""
-                        class="input input-bordered w-72 max-w-xs mb-8 rounded-full"
+                        class="input input-bordered w-72 max-w-xs mb-4 rounded-full"
+                        minlength="3"
+                        required
+                        title="Title must be at least 3 characters long"
                       />
                     </label>
-                    <div class="flex justify-center mx-auto mb-8">
-                      <button class="primary-button">Add Image</button>
+                    <label class="form-control w-72 mx-auto">
+                      <div class="label ps-2">
+                        <span class="label-text text-lg font-extralight"
+                          >Description</span
+                        >
+                      </div>
+                      <textarea
+                        name="description"
+                        id="description"
+                        class="textarea-height w-72 rounded-3xl mb-4"
+                        required
+                      ></textarea>
+                    </label>
+                    <label class="form-control w-72 mx-auto">
+                      <div class="label ps-2">
+                        <span class="label-text text-lg font-extralight"
+                          >Add image url</span
+                        >
+                      </div>
+                      <input
+                        type="text"
+                        placeholder=""
+                        class="input input-bordered w-72 max-w-xs mb-4 rounded-full"
+                        required
+                      />
+                      <input
+                        type="text"
+                        placeholder=""
+                        class="input input-bordered w-72 max-w-xs mb-4 rounded-full"
+                      />
+                      <input
+                        type="text"
+                        placeholder=""
+                        class="input input-bordered w-72 max-w-xs mb-5 rounded-full"
+                      />
+                    </label>
+                    <label
+                      for="quantity-input"
+                      class="form-control w-80 mx-auto"
+                    >
+                      <div class="label flex flex-col items-center">
+                        <span class="mb-1 label-text text-lg font-light"
+                          >Bids ends in</span
+                        >
+                        <div class="relative flex items-center max-w-[8rem]">
+                          <button
+                            type="button"
+                            id="decrement-button"
+                            data-input-counter-decrement="quantity-input"
+                            class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 border border-gray-300 rounded-s-full p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+                          >
+                            <svg
+                              class="w-3 h-3 text-gray-900 dark:text-white"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 18 2"
+                            >
+                              <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M1 1h16"
+                              />
+                            </svg>
+                          </button>
+                          <input
+                            type="text"
+                            id="quantity-input"
+                            data-input-counter
+                            data-input-counter-min="1"
+                            data-input-counter-max="7"
+                            aria-describedby="helper-text-explanation"
+                            class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-12 py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder=""
+                            value=""
+                          />
+                          <button
+                            type="button"
+                            id="increment-button"
+                            data-input-counter-increment="quantity-input"
+                            class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e-full p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+                          >
+                            <svg
+                              class="w-3 h-3 text-gray-900"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 18 18"
+                            >
+                              <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 1v16M1 9h16"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                        <p
+                          id="helper-text-explanation"
+                          class="mt-1 text-lg text-darkest-grey font-light"
+                        >
+                          days
+                        </p>
+                      </div>
+                    </label>
+                    <div class="flex justify-center mx-auto my-8">
+                      <button class="primary-button">Add Listing</button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <h2
-          class="text-2xl text-green-primary font-semibold text-center mt-8 mb-4"
+        </section>
+        <section
+          class="w-10/12 lg:w-8/12 xl:w-10/12 max-w-screen-lg mx-auto lg:mx-0 lg:px-10"
         >
-          lisa489
-        </h2>
-        <p class="text-lg text-green-primary text-center">
-          Credit: <span>$785</span>
-        </p>
-        <button class="flex mx-auto mt-12 primary-button">
-          + Add new listing
-        </button>
-      </section>
-      <section>
-        <div class="w-10/12 max-w-screen-2xl mx-auto">
-          <h3 class="text-center font-size22 mt-10">My bids</h3>
-          <div
-            class="grid grid-flow-row grid-cols-1 justify-items-center sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-20 mx-auto my-3"
-          >
-            <a href="../listing/">
-              <div class="bg-white border border-gray-200 rounded-lg shadow">
-                <img
-                  class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
-                  src="../images/sofa-3.jpg"
-                  alt=""
-                />
-                <div class="m-5">
-                  <h2
-                    class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
-                  >
-                    Comfy Sofa 1
-                  </h2>
-                  <div class="flex flex-row mb-2">
-                    <span class="mr-3">Latest bid:</span>
-                    <span class="font-medium">$215</span>
-                  </div>
-                  <div class="flex flex-row">
-                    <span class="mr-3">Expires in:</span>
-                    <span class="font-medium">0d 10h 2m</span>
+          <div>
+            <h3 class="text-center font-size22 mt-10 lg:mt-32 lg:text-left">
+              My bids
+            </h3>
+            <div
+              class="grid grid-flow-row grid-cols-1 justify-items-center sm:grid-cols-2 xl:grid-cols-3 gap-20 lg:gap-12 lg:gap-y-12 xl:gap-24 xl:gap-y-10 mx-auto my-3"
+            >
+              <a href="../listing/">
+                <div
+                  class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg"
+                >
+                  <img
+                    class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
+                    src="../images/sofa-3.jpg"
+                    alt=""
+                  />
+                  <div class="m-5">
+                    <h2
+                      class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
+                    >
+                      Comfy Sofa 1
+                    </h2>
+                    <div class="flex flex-row mb-2">
+                      <span class="mr-3">Latest bid:</span>
+                      <span class="font-medium">$215</span>
+                    </div>
+                    <div class="flex flex-row">
+                      <span class="mr-3">Expires in:</span>
+                      <span class="font-medium">0d 10h 2m</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
-            <a href="../listing/">
-              <div class="bg-white border border-gray-200 rounded-lg shadow">
-                <img
-                  class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
-                  src="../images/comfy-sofa.jpg"
-                  alt=""
-                />
-                <div class="m-5">
-                  <h2
-                    class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
-                  >
-                    Comfy Sofa 3
-                  </h2>
-                  <div class="flex flex-row mb-2">
-                    <span class="mr-3">Latest bid:</span>
-                    <span class="font-medium">$215</span>
-                  </div>
-                  <div class="flex flex-row">
-                    <span class="mr-3">Expires in:</span>
-                    <span class="font-medium">0d 10h 2m</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <a href="../listing/">
-              <div class="bg-white border border-gray-200 rounded-lg shadow">
-                <img
-                  class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
-                  src="../images/sofa-3.jpg"
-                  alt=""
-                />
-                <div class="m-5">
-                  <h2
-                    class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
-                  >
-                    Comfy Sofa 1
-                  </h2>
-                  <div class="flex flex-row mb-2">
-                    <span class="mr-3">Latest bid:</span>
-                    <span class="font-medium">$215</span>
-                  </div>
-                  <div class="flex flex-row">
-                    <span class="mr-3">Expires in:</span>
-                    <span class="font-medium">0d 10h 2m</span>
+              </a>
+              <a href="../listing/">
+                <div
+                  class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg"
+                >
+                  <img
+                    class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
+                    src="../images/comfy-sofa.jpg"
+                    alt=""
+                  />
+                  <div class="m-5">
+                    <h2
+                      class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
+                    >
+                      Comfy Sofa 3
+                    </h2>
+                    <div class="flex flex-row mb-2">
+                      <span class="mr-3">Latest bid:</span>
+                      <span class="font-medium">$215</span>
+                    </div>
+                    <div class="flex flex-row">
+                      <span class="mr-3">Expires in:</span>
+                      <span class="font-medium">0d 10h 2m</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
-            <a href="../listing/">
-              <div class="bg-white border border-gray-200 rounded-lg shadow">
-                <img
-                  class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
-                  src="../images/comfy-sofa.jpg"
-                  alt=""
-                />
-                <div class="m-5">
-                  <h2
-                    class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
-                  >
-                    Comfy Sofa 3
-                  </h2>
-                  <div class="flex flex-row mb-2">
-                    <span class="mr-3">Latest bid:</span>
-                    <span class="font-medium">$215</span>
-                  </div>
-                  <div class="flex flex-row">
-                    <span class="mr-3">Expires in:</span>
-                    <span class="font-medium">0d 10h 2m</span>
+              </a>
+              <a href="../listing/">
+                <div
+                  class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg"
+                >
+                  <img
+                    class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
+                    src="../images/sofa-3.jpg"
+                    alt=""
+                  />
+                  <div class="m-5">
+                    <h2
+                      class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
+                    >
+                      Comfy Sofa 1
+                    </h2>
+                    <div class="flex flex-row mb-2">
+                      <span class="mr-3">Latest bid:</span>
+                      <span class="font-medium">$215</span>
+                    </div>
+                    <div class="flex flex-row">
+                      <span class="mr-3">Expires in:</span>
+                      <span class="font-medium">0d 10h 2m</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
+              </a>
+              <a href="../listing/">
+                <div
+                  class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg"
+                >
+                  <img
+                    class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
+                    src="../images/comfy-sofa.jpg"
+                    alt=""
+                  />
+                  <div class="m-5">
+                    <h2
+                      class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
+                    >
+                      Comfy Sofa 3
+                    </h2>
+                    <div class="flex flex-row mb-2">
+                      <span class="mr-3">Latest bid:</span>
+                      <span class="font-medium">$215</span>
+                    </div>
+                    <div class="flex flex-row">
+                      <span class="mr-3">Expires in:</span>
+                      <span class="font-medium">0d 10h 2m</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="w-10/12 max-w-screen-2xl mx-auto">
-          <h3 class="text-center font-size22 mt-10">My Listings</h3>
-          <div
-            class="grid grid-flow-row grid-cols-1 justify-items-center sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-20 mx-auto my-3"
-          >
-            <a href="../listing/">
-              <div class="bg-white border border-gray-200 rounded-lg shadow">
-                <img
-                  class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
-                  src="../images/sofa-3.jpg"
-                  alt=""
-                />
-                <div class="m-5">
-                  <h2
-                    class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
-                  >
-                    Comfy Sofa 1
-                  </h2>
-                  <div class="flex flex-row mb-2">
-                    <span class="mr-3">Latest bid:</span>
-                    <span class="font-medium">$215</span>
-                  </div>
-                  <div class="flex flex-row">
-                    <span class="mr-3">Expires in:</span>
-                    <span class="font-medium">0d 10h 2m</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <a href="../listing/">
-              <div class="bg-white border border-gray-200 rounded-lg shadow">
-                <img
-                  class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
-                  src="../images/comfy-sofa.jpg"
-                  alt=""
-                />
-                <div class="m-5">
-                  <h2
-                    class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
-                  >
-                    Comfy Sofa 3
-                  </h2>
-                  <div class="flex flex-row mb-2">
-                    <span class="mr-3">Latest bid:</span>
-                    <span class="font-medium">$215</span>
-                  </div>
-                  <div class="flex flex-row">
-                    <span class="mr-3">Expires in:</span>
-                    <span class="font-medium">0d 10h 2m</span>
+          <div>
+            <h3 class="text-center font-size22 mt-10 xl:mt-16 xl:text-left">
+              My Listings
+            </h3>
+            <div
+              class="grid grid-flow-row grid-cols-1 justify-items-center sm:grid-cols-2 xl:grid-cols-3 gap-20 lg:gap-12 lg:gap-y-12 xl:gap-24 xl:gap-y-10 mx-auto my-3"
+            >
+              <a href="../listing/">
+                <div
+                  class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg"
+                >
+                  <img
+                    class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
+                    src="../images/sofa-3.jpg"
+                    alt=""
+                  />
+                  <div class="m-5">
+                    <h2
+                      class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
+                    >
+                      Comfy Sofa 1
+                    </h2>
+                    <div class="flex flex-row mb-2">
+                      <span class="mr-3">Latest bid:</span>
+                      <span class="font-medium">$215</span>
+                    </div>
+                    <div class="flex flex-row">
+                      <span class="mr-3">Expires in:</span>
+                      <span class="font-medium">0d 10h 2m</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
-            <a href="../listing/">
-              <div class="bg-white border border-gray-200 rounded-lg shadow">
-                <img
-                  class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
-                  src="../images/sofa-3.jpg"
-                  alt=""
-                />
-                <div class="m-5">
-                  <h2
-                    class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
-                  >
-                    Comfy Sofa 1
-                  </h2>
-                  <div class="flex flex-row mb-2">
-                    <span class="mr-3">Latest bid:</span>
-                    <span class="font-medium">$215</span>
-                  </div>
-                  <div class="flex flex-row">
-                    <span class="mr-3">Expires in:</span>
-                    <span class="font-medium">0d 10h 2m</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <a href="../listing/">
-              <div class="bg-white border border-gray-200 rounded-lg shadow">
-                <img
-                  class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
-                  src="../images/comfy-sofa.jpg"
-                  alt=""
-                />
-                <div class="m-5">
-                  <h2
-                    class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
-                  >
-                    Comfy Sofa 3
-                  </h2>
-                  <div class="flex flex-row mb-2">
-                    <span class="mr-3">Latest bid:</span>
-                    <span class="font-medium">$215</span>
-                  </div>
-                  <div class="flex flex-row">
-                    <span class="mr-3">Expires in:</span>
-                    <span class="font-medium">0d 10h 2m</span>
+              </a>
+              <a href="../listing/">
+                <div
+                  class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg"
+                >
+                  <img
+                    class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
+                    src="../images/comfy-sofa.jpg"
+                    alt=""
+                  />
+                  <div class="m-5">
+                    <h2
+                      class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
+                    >
+                      Comfy Sofa 3
+                    </h2>
+                    <div class="flex flex-row mb-2">
+                      <span class="mr-3">Latest bid:</span>
+                      <span class="font-medium">$215</span>
+                    </div>
+                    <div class="flex flex-row">
+                      <span class="mr-3">Expires in:</span>
+                      <span class="font-medium">0d 10h 2m</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
+              </a>
+              <a href="../listing/">
+                <div
+                  class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg"
+                >
+                  <img
+                    class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
+                    src="../images/sofa-3.jpg"
+                    alt=""
+                  />
+                  <div class="m-5">
+                    <h2
+                      class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
+                    >
+                      Comfy Sofa 1
+                    </h2>
+                    <div class="flex flex-row mb-2">
+                      <span class="mr-3">Latest bid:</span>
+                      <span class="font-medium">$215</span>
+                    </div>
+                    <div class="flex flex-row">
+                      <span class="mr-3">Expires in:</span>
+                      <span class="font-medium">0d 10h 2m</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="../listing/">
+                <div
+                  class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg"
+                >
+                  <img
+                    class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
+                    src="../images/comfy-sofa.jpg"
+                    alt=""
+                  />
+                  <div class="m-5">
+                    <h2
+                      class="mb-2 text-2xl font-normal font-kodchasan tracking-tight text-gray-900 dark:text-white"
+                    >
+                      Comfy Sofa 3
+                    </h2>
+                    <div class="flex flex-row mb-2">
+                      <span class="mr-3">Latest bid:</span>
+                      <span class="font-medium">$215</span>
+                    </div>
+                    <div class="flex flex-row">
+                      <span class="mr-3">Expires in:</span>
+                      <span class="font-medium">0d 10h 2m</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
     <footer class="bg-light-grey">
       <div class="mx-auto w-full max-w-screen-xl">
