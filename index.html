@@ -83,8 +83,9 @@
               </li>
               <li>
                 <a
-                  href="/listing/"
-                  class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  data-modal-target="new-listing-modal"
+                  data-modal-toggle="new-listing-modal"
+                  class="cursor-pointer block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Add listing</a
                 >
               </li>
@@ -108,6 +109,181 @@
       </nav>
     </header>
     <main>
+      <!-- Modal New Listing -->
+      <div
+        id="new-listing-modal"
+        data-modal-backdrop="static"
+        tabindex="-1"
+        aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      >
+        <div class="relative p-4 w-full max-w-md max-h-full">
+          <!-- Modal add listing content -->
+          <div class="relative bg-light-grey rounded-lg shadow">
+            <!-- Modal add listing header -->
+            <div
+              class="flex items-center justify-between px-4 ps-4 pe-0 rounded-t"
+            >
+              <button
+                type="button"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                data-modal-hide="new-listing-modal"
+              >
+                <svg
+                  class="w-3 h-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                  />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <!-- Modal add listing body -->
+            <div class="flex flex-col justify-center">
+              <h3 class="mx-auto text-2xl mb-6 font-kodchasan">
+                Add new listing
+              </h3>
+              <form class="flex flex-col justify-center" action="/profile/">
+                <label class="form-control w-72 mx-auto">
+                  <div class="label ps-2">
+                    <span class="label-text text-lg font-extralight"
+                      >Title</span
+                    >
+                  </div>
+                  <input
+                    type="text"
+                    placeholder=""
+                    class="input input-bordered w-72 max-w-xs mb-4 rounded-full"
+                    minlength="3"
+                    required
+                    title="Title must be at least 3 characters long"
+                  />
+                </label>
+                <label class="form-control w-72 mx-auto">
+                  <div class="label ps-2">
+                    <span class="label-text text-lg font-extralight"
+                      >Description</span
+                    >
+                  </div>
+                  <textarea
+                    name="description"
+                    id="description"
+                    class="textarea-height w-72 rounded-3xl mb-4"
+                    required
+                  ></textarea>
+                </label>
+                <label class="form-control w-72 mx-auto">
+                  <div class="label ps-2">
+                    <span class="label-text text-lg font-extralight"
+                      >Add image url</span
+                    >
+                  </div>
+                  <input
+                    type="text"
+                    placeholder=""
+                    class="input input-bordered w-72 max-w-xs mb-4 rounded-full"
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder=""
+                    class="input input-bordered w-72 max-w-xs mb-4 rounded-full"
+                  />
+                  <input
+                    type="text"
+                    placeholder=""
+                    class="input input-bordered w-72 max-w-xs mb-5 rounded-full"
+                  />
+                </label>
+                <label for="quantity-input" class="form-control w-80 mx-auto">
+                  <div class="label flex flex-col items-center">
+                    <span class="mb-1 label-text text-lg font-light"
+                      >Bids ends in</span
+                    >
+                    <div class="relative flex items-center max-w-[8rem]">
+                      <button
+                        type="button"
+                        id="decrement-button"
+                        data-input-counter-decrement="quantity-input"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 border border-gray-300 rounded-s-full p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+                      >
+                        <svg
+                          class="w-3 h-3 text-gray-900 dark:text-white"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 18 2"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M1 1h16"
+                          />
+                        </svg>
+                      </button>
+                      <input
+                        type="text"
+                        id="quantity-input"
+                        data-input-counter
+                        data-input-counter-min="1"
+                        data-input-counter-max="7"
+                        aria-describedby="helper-text-explanation"
+                        class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-12 py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder=""
+                        value=""
+                      />
+                      <button
+                        type="button"
+                        id="increment-button"
+                        data-input-counter-increment="quantity-input"
+                        class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e-full p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+                      >
+                        <svg
+                          class="w-3 h-3 text-gray-900"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 18 18"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 1v16M1 9h16"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                    <p
+                      id="helper-text-explanation"
+                      class="mt-1 text-lg text-darkest-grey font-light"
+                    >
+                      days
+                    </p>
+                  </div>
+                </label>
+                <div class="flex justify-center mx-auto my-8">
+                  <button type="submit" class="primary-button">
+                    Add Listing
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       <div
         class="flex items-center justify-center w-5/6 sm:w-4/6 md:w-1/2 lg:w-3/6 xl:w-2/6 mx-auto mb-8"
       >
