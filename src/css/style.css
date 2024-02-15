@@ -17,3 +17,15 @@
 .secondary-button {
   @apply text-green-primary hover:text-light-grey bg-light-grey hover:bg-green-primary-hover border border-green-primary hover:border-green-primary-hover rounded-full font-light text-lg px-5 py-3 text-center mb-2;
 }
+
+.hight-42px {
+  height: 42px;
+}
+
+.textarea-height {
+  height: 150px;
+}
+
+textarea {
+  resize: none;
+}
