@@ -21,6 +21,7 @@ export default {
         "medium-grey": "#A5A5A5",
         "lighter-grey": "#BBBBBB",
         "almost-white": "#FEFEFE",
+        "medium2-grey": "#6B7280",
       },
     },
   },
