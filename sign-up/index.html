@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script type="module" src="../src/js/auth/register.mjs" defer></script>
     <script type="module" src="../src/js/main.js" defer></script>
     <link rel="stylesheet" href="../src/css/style.css" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
@@ -118,7 +119,7 @@
           Sign up now and bid on your favorite items!
         </h1>
       </div>
-      <form class="flex flex-col" action="get">
+      <form id="register-form" class="flex flex-col" action="get">
         <label class="form-control w-72 max-w-xs mx-auto">
           <div class="label ps-2">
             <span class="label-text text-lg font-extralight">Username</span>
@@ -166,13 +167,14 @@
             >
           </div>
           <input
-            type="text"
+            type="url"
+            alt="avatar image"
             placeholder=""
             class="input input-bordered w-72 max-w-xs mb-6 rounded-full"
           />
         </label>
         <div class="flex justify-center mx-auto mt-4">
-          <button class="primary-button">Sign Up</button>
+          <button type="submit" class="primary-button">Sign Up</button>
         </div>
       </form>
       <a href="/log-in/">
