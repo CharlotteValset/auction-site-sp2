@@ -50,7 +50,7 @@ const loginUser = async (url, data) => {
       alert("Login successful!");
 
       // Redirect to the feed page after successful login
-      window.location.href = "../../../profile/";
+      window.location.href = "/profile/";
 
       // Returning the parsed JSON data
       return json;
