@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script type="module" src="../src/js/auth/login.mjs" defer></script>
     <script type="module" src="../src/js/main.js" defer></script>
     <link rel="stylesheet" href="../src/css/style.css" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
@@ -117,7 +118,7 @@
       <div class="mx-auto mt-8 mb-4 w-56 md:w-96">
         <h1 class="text-center text-2xl">Please log in</h1>
       </div>
-      <form class="flex flex-col" action="get">
+      <form id="login-form" class="flex flex-col" action="get">
         <label class="form-control w-72 max-w-xs mx-auto">
           <div class="label ps-2">
             <span class="label-text text-lg font-extralight">Email</span>
@@ -145,7 +146,7 @@
           />
         </label>
         <div class="flex justify-center mx-auto mt-3">
-          <button class="primary-button">Log in</button>
+          <button type="submit" class="primary-button">Log in</button>
         </div>
       </form>
       <a href="/sign-up/">
