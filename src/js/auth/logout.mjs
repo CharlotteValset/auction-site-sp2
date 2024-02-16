@@ -1,4 +1,4 @@
-export const logout = () => {
+const logout = () => {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("userProfile");
 
