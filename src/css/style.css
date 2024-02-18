@@ -29,3 +29,14 @@
 textarea {
   resize: none;
 }
+
+/* -- ERROR_MESSAGE */
+.message {
+  background-color: #fff;
+  color: rgb(166, 0, 0);
+  box-shadow: 0px 2px 2px 0px #00000040;
+  padding: 15px;
+  max-width: 275px;
+  text-align: center;
+  margin: 20px auto;
+}
