@@ -27,22 +27,19 @@ const loginUser = async (url, data) => {
     const json = await response.json();
     console.log("JSON", json);
 
-    if (json.data.accessToken) {
+    if (json.accessToken) {
       // Storing the accessToken into local storage
-      const accessToken = json.data.accessToken;
+      const accessToken = json.accessToken;
       localStorage.setItem("accessToken", accessToken);
+
       // Storing the user profile info into local storage
       localStorage.setItem(
         "userProfile",
         JSON.stringify({
-          name: json.data.name,
-          email: json.data.email,
-          avatar: {
-            url: json.data.avatar,
-          },
-          banner: {
-            url: json.data.banner,
-          },
+          name: json.name,
+          email: json.email,
+          avatar: json.avatar,
+          banner: json.banner,
         }),
       );
 

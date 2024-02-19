@@ -1,13 +1,11 @@
 // Getting accessToken from localStorage
 export const token = localStorage.getItem("accessToken");
-const apiKey = localStorage.getItem("api_key");
 
 // Creating an object to include the accessToken in the request headers
 export const getData = {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
-    "X-Noroff-API-Key": apiKey,
     Authorization: `Bearer ${token}`,
   },
 };
@@ -33,7 +31,6 @@ export const fetchWithToken = async (url, options = getData) => {
 
     // Parse the response body as JSON
     const json = await response.json();
-
     // Handle errors that may occur during the fetch operation
     return json;
   } catch (error) {

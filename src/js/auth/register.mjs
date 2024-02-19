@@ -70,9 +70,7 @@ const register = (event) => {
     name: name.value,
     email: email.value,
     password: password.value,
-    avatar: {
-      url: avatar.value,
-    },
+    avatar: avatar.value,
   };
 
   // Calling the registerUser function to send the user data to the server
