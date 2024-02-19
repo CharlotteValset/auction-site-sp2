@@ -11,6 +11,11 @@
     />
     <script type="module" src="./src/js/auth/logout.mjs" defer></script>
     <script type="module" src="./src/js/main.js" defer></script>
+    <script
+      type="module"
+      src="./src/js/listings/fetchListings.mjs"
+      defer
+    ></script>
     <link rel="stylesheet" href="./src/css/style.css" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <title>BidOnIt</title>
@@ -336,11 +341,15 @@
         </div>
       </form>
       <section class="my-10 w-10/12 max-w-screen-2xl mx-auto">
+        <div class="loader-container">
+          <div class="content-loader"></div>
+          <p>Loading...</p>
+        </div>
         <div
-          id="listingsFeed"
+          id="listings-container"
           class="grid grid-flow-row grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20 gap-y-12 lg:gap-12 xl:gap-28 xl:gap-y-10"
         >
-          <a
+          <!--           <a
             href="./listing/"
             class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
           >
@@ -390,7 +399,7 @@
                 </div>
               </div>
             </div>
-          </a>
+          </a> -->
           <!-- <a href="./listing/">
             <div
               class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
@@ -413,7 +422,7 @@
               </div>
             </div>
           </a> -->
-          <a href="../listing/">
+          <!--           <a href="../listing/">
             <div
               class="max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg"
             >
@@ -594,7 +603,7 @@
                 </div>
               </div>
             </div>
-          </a>
+          </a> -->
         </div>
       </section>
     </main>
