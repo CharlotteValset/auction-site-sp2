@@ -1,44 +1,67 @@
-export const listingsCard = () => {
+export const listingsCard = (data) => {
   const card = document.createElement("a");
-  card.href = "../../../listing/index.html?id=${data.id}";
+  card.href = `../../../listing/index.html?id=${data.id}`;
   card.className =
     "max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg";
-  cardLayout.appendChild(card);
 
   const cardImage = document.createElement("img");
   cardImage.src = !!data.media ? data.media : "../../../images/decor.png";
   cardImage.className =
     "rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover";
-  cardImage.setAttribute = ("alt", "${data.media.alt}");
   card.appendChild(cardImage);
 
   const cardTextWrapper = document.createElement("div");
-  cardTextWrapper.className = "m-5";
+  cardTextWrapper.className = "p-5";
   card.appendChild(cardTextWrapper);
 
+  function shortenHeading(text, maxLength) {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "...";
+    }
+    return text;
+  }
+  const originalTitle = data.title;
+  const shortenedTitle = shortenHeading(originalTitle, 15);
+
   const cardHeading = document.createElement("h2");
-  cardHeading.innerText = data.title;
+  cardHeading.innerText = shortenedTitle;
   cardHeading.className =
     "mb-2 text-2xl font-normal font-kodchasan tracking-tight";
-  card.appendChild(cardHeading);
+  cardTextWrapper.appendChild(cardHeading);
 
   const latestBidWrapper = document.createElement("div");
   latestBidWrapper.className = "flex flex-row mb-2";
-  card.appendChild(latestBidWrapper);
+  cardTextWrapper.appendChild(latestBidWrapper);
 
   const latestBidLabel = document.createElement("span");
   latestBidLabel.className = "mr-3";
   latestBidLabel.innerText = "Latest bid:";
   latestBidWrapper.appendChild(latestBidLabel);
 
+  const sortBidAmountDesc = (array) => {
+    const sortedArray = array.sort(function (a, b) {
+      return b.amount - a.amount; // Sort in descending order by bid amount
+    });
+    return sortedArray;
+  };
+
+  const bids = sortBidAmountDesc(data.bids);
+
   const latestBidAmount = document.createElement("span");
-  latestBidLabel.className = "font-medium";
-  latestBidLabel.innerText = data.bids.amount;
+  latestBidAmount.className = "font-medium";
+  latestBidAmount.innerText =
+    bids.length > 0 ? `${bids[0].amount}` : "No bids yet";
+  /* latestBidAmount.innerText = `${bids[0].amount}`; */
   latestBidWrapper.appendChild(latestBidAmount);
+
+  /*   const latestBidAmount = document.createElement("span");
+  latestBidAmount.className = "font-medium";
+  latestBidAmount.innerText = data.bids.amount;
+  latestBidWrapper.appendChild(latestBidAmount); */
 
   const bidExpiresWrapper = document.createElement("div");
   bidExpiresWrapper.className = "flex flex-row";
-  card.appendChild(bidExpiresWrapper);
+  cardTextWrapper.appendChild(bidExpiresWrapper);
 
   const bidExpiresLabel = document.createElement("span");
   bidExpiresLabel.className = "mr-3";
@@ -49,4 +72,6 @@ export const listingsCard = () => {
   bidExpiresCountdown.className = "font-medium";
   bidExpiresCountdown.innerText = data.endsAt;
   bidExpiresWrapper.appendChild(bidExpiresCountdown);
+
+  return card;
 };
