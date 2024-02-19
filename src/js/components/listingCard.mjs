@@ -1,3 +1,5 @@
+import placeholderImg from "../../../images/no_img.jpg";
+
 export const listingsCard = (data) => {
   const card = document.createElement("a");
   card.href = `../../../listing/index.html?id=${data.id}`;
@@ -15,7 +17,7 @@ export const listingsCard = (data) => {
   ) {
     cardImage.src = data.media[0];
   } else {
-    cardImage.src = "/images/no_img.jpg";
+    cardImage.src = `${placeholderImg}`;
   }
 
   card.appendChild(cardImage);
