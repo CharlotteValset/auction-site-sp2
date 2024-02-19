@@ -5,9 +5,19 @@ export const listingsCard = (data) => {
     "max-w-sm sm:max-w-72 bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg";
 
   const cardImage = document.createElement("img");
-  cardImage.src = !!data.media ? data.media : "../../../images/decor.png";
   cardImage.className =
     "rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover";
+
+  if (
+    Array.isArray(data.media) &&
+    data.media.length > 0 &&
+    data.media[0] !== "null"
+  ) {
+    cardImage.src = data.media[0];
+  } else {
+    cardImage.src = "../../../images/no_img.jpg";
+  }
+
   card.appendChild(cardImage);
 
   const cardTextWrapper = document.createElement("div");
