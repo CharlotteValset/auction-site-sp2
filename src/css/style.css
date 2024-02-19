@@ -30,6 +30,34 @@ textarea {
   resize: none;
 }
 
+/* -- LOADER */
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.content-loader {
+  width: 70px;
+  height: 70px;
+  border: 10px solid #bbbbbb;
+  border-top: 10px solid #1d7671;
+  border-radius: 50%;
+  margin: 20px auto;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* -- ERROR_MESSAGE */
 .message {
   background-color: #fff;
