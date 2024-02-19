@@ -29,3 +29,42 @@
 textarea {
   resize: none;
 }
+
+/* -- LOADER */
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.content-loader {
+  width: 70px;
+  height: 70px;
+  border: 10px solid #bbbbbb;
+  border-top: 10px solid #1d7671;
+  border-radius: 50%;
+  margin: 20px auto;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* -- ERROR_MESSAGE */
+.message {
+  background-color: #fff;
+  color: rgb(166, 0, 0);
+  box-shadow: 0px 2px 2px 0px #00000040;
+  padding: 15px;
+  max-width: 275px;
+  text-align: center;
+  margin: 20px auto;
+}
