@@ -15,7 +15,7 @@ export const listingsCard = (data) => {
   ) {
     cardImage.src = data.media[0];
   } else {
-    cardImage.src = "../../../images/no_img.jpg";
+    cardImage.src = "/images/no_img.jpg";
   }
 
   card.appendChild(cardImage);
