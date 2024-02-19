@@ -1,5 +1,5 @@
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
-import { fetchWithToken } from "../auth/accessToken.mjs";
+import { fetchWithToken } from "../auth/accesstoken.mjs";
 import { createMessage } from "../errorHandling/errorMessage.mjs";
 import { listingsCard } from "../components/listingCard.mjs";
 
