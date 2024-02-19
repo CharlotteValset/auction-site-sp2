@@ -1,23 +1,14 @@
-import { apiBaseUrl, allListingsUrl } from "./variables.mjs";
-import { fetchWithToken } from "./accessToken.mjs";
-import { createMessage } from "./errorMessage.mjs";
+import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
+import { fetchWithToken } from "../auth/accessToken.mjs";
+import { createMessage } from "../errorHandling/errorMessage.mjs";
+import { listingsCard } from "../components/listingCard.mjs";
 
 /**
  * Fetches all posts with an access token
- * @returns {Promise} A promise representing the asynchronous operation of fetching posts.
+ * @returns {Promise} A promise representing the asynchronous operation of fetching listings.
  */
 const fetchAllListings = async () => {
-  return await fetchWithToken(`${apiBaseUrl}${allListingsUrl}?_author=true`);
-};
-
-/**
- * Creates an HTML card element.
- *
- * @param {Object} postData The data for the post.
- * @returns {HTMLElement} The generated HTML card element.
- */
-const createCardAllPosts = (postData) => {
-  return cardColLayout;
+  return await fetchWithToken(`${apiBaseUrl}${allListingsUrl}?_bids=true`);
 };
 
 // Targeting DOM elements
@@ -29,13 +20,13 @@ const errorMessage = createMessage("error");
 let loadingListings = false;
 
 /**
- * Displays post cards by fetching and rendering posts.
+ * Displays listings cards by fetching and rendering listings.
  *
  * @throws {Error} - Throws an error if there's an issue during the fetch operation.
  */
 export const displayAllListings = async () => {
   try {
-    // If posts are already being loaded, return
+    // If listings are already being loaded, return
     if (loadingListings) {
       return;
     }
@@ -43,20 +34,22 @@ export const displayAllListings = async () => {
     // Set loading flag to true
     loadingListings = true;
 
-    // Display loader while posts are being fetched
+    // Display loader while listings are being fetched
     loaderContainer.style.display = "block";
 
     // Fetch listings
     const listings = await fetchAllListings();
 
+    console.log("listings", listings);
+
     // Clear existing cards from the container
     listingsContainer.innerHTML = "";
 
-    // Iterate over each post data and create a card for each post
-    listings.forEach((postData) => {
-      // Create a card element for the current post data
-      const listingCard = createCardAllPosts(postData);
-      // Append the generated card to the container for all posts
+    // Iterate over each listing data and create a card for each listing
+    listings.forEach((data) => {
+      // Create a card element for the current listing data
+      const listingCard = listingsCard(data);
+      // Append the generated card to the container for all listings
       listingsContainer.appendChild(listingCard);
     });
   } catch (error) {
