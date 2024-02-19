@@ -2,7 +2,7 @@ export const listingsCard = (data) => {
   const card = document.createElement("a");
   card.href = `../../../listing/index.html?id=${data.id}`;
   card.className =
-    "max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg";
+    "max-w-sm sm:max-w-72 bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg";
 
   const cardImage = document.createElement("img");
   cardImage.src = !!data.media ? data.media : "../../../images/decor.png";
