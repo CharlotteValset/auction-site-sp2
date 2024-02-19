@@ -10,7 +10,6 @@ export default {
         signup: path.resolve(__dirname, "sign-up/index.html"),
         listing: path.resolve(__dirname, "listing/index.html"),
         profile: path.resolve(__dirname, "profile/index.html"),
-        images: path.resolve(__dirname, "images/"),
       },
     },
   },
