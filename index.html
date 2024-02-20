@@ -16,6 +16,11 @@
       src="./src/js/listings/fetchListings.mjs"
       defer
     ></script>
+    <script
+      type="module"
+      src="./src/js/listings/searchListings.mjs"
+      defer
+    ></script>
     <link rel="stylesheet" href="./src/css/style.css" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <title>BidOnIt</title>
@@ -307,13 +312,13 @@
         </p>
       </div>
 
-      <form>
+      <form id="search-form">
         <div class="flex justify-center mt-3">
           <div class="relative">
             <input
               type="search"
-              id="search-dropdown"
-              class="block p-2.5 w-60 z-20 text-sm text-darkest-grey bg-gray-50 rounded-full border border-medium-grey dark:bg-gray-700 dark:border-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              id="search-input"
+              class="block p-2.5 w-60 z-20 text-sm text-darkest-grey bg-gray-50 rounded-full border border-medium-grey dark:bg-gray-700 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white"
               placeholder="Search"
             />
             <button
@@ -345,6 +350,7 @@
           <div class="content-loader"></div>
           <p>Loading...</p>
         </div>
+        <div id="resultMessage"></div>
         <div
           id="listings-container"
           class="grid grid-flow-row grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20 gap-y-12 lg:gap-12 xl:gap-28 xl:gap-y-10"
