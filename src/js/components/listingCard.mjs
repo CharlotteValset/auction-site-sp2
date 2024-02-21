@@ -1,4 +1,5 @@
 import placeholderImg from "../../../images/no_img.jpg";
+import { createCountdownTimer } from "../bids/bidCountdown.mjs";
 
 export const listingsCard = (data) => {
   const card = document.createElement("a");
@@ -78,7 +79,7 @@ export const listingsCard = (data) => {
   const bids = sortBidAmountDesc(data.bids);
 
   const latestBidAmount = document.createElement("span");
-  latestBidAmount.className = " text-xl font-medium align-center";
+  latestBidAmount.className = "text-xl font-medium";
   latestBidAmount.innerText =
     bids.length > 0 ? `$ ${bids[0].amount}` : "No bids yet";
   latestBidWrapper.appendChild(latestBidAmount);
@@ -93,8 +94,12 @@ export const listingsCard = (data) => {
   bidExpiresWrapper.appendChild(bidExpiresLabel);
 
   const bidExpiresCountdown = document.createElement("span");
+  bidExpiresCountdown.id = "bidExpiresCountdown";
   bidExpiresCountdown.className = "font-medium";
-  bidExpiresCountdown.innerText = data.endsAt;
+  document.addEventListener("DOMContentLoaded", function () {
+    const endDateString = data.endsAt;
+    createCountdownTimer(endDateString);
+  });
   bidExpiresWrapper.appendChild(bidExpiresCountdown);
 
   return card;
