@@ -6,7 +6,7 @@ import { listingsCard } from "../components/listingCard.mjs";
 let listingsArray = [];
 
 // URL to the fetch API
-const API_URL = `${apiBaseUrl}${allListingsUrl}?_bids=true`;
+const API_URL = `${apiBaseUrl}${allListingsUrl}?_bids=true&_active=true`;
 
 /**
  * Renders all the listings in the selected container.
