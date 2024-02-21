@@ -8,7 +8,9 @@ import { listingsCard } from "../components/listingCard.mjs";
  * @returns {Promise} A promise representing the asynchronous operation of fetching listings.
  */
 const fetchAllListings = async () => {
-  return await fetchWithToken(`${apiBaseUrl}${allListingsUrl}?_bids=true`);
+  return await fetchWithToken(
+    `${apiBaseUrl}${allListingsUrl}?_bids=true&_active=true`,
+  );
 };
 
 // Targeting DOM elements
