@@ -11,6 +11,10 @@
     />
     <script type="module" src="../src/js/auth/logout.mjs" defer></script>
     <script type="module" src="../src/js/main.js" defer></script>
+    <script
+      type="module"
+      src="../src/js/pages/profile/displayUserData.mjs"
+    ></script>
     <link rel="stylesheet" href="../src/css/style.css" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <title>Profile - BidOnIt</title>
@@ -119,9 +123,9 @@
           </h1>
           <div class="flex flex-col justify-center">
             <img
+              id="userAvatar"
               class="w-72 h-72 object-cover rounded-full mx-auto mt-8 mb-2"
-              src="../images/avatar.jpg"
-              alt="Rounded avatar"
+              alt="Profile Image"
             />
             <div>
               <a
@@ -202,12 +206,11 @@
             </div>
           </div>
           <h2
+            id="userName"
             class="text-2xl text-green-primary font-semibold text-center mt-8 mb-4"
-          >
-            lisa489
-          </h2>
+          ></h2>
           <p class="text-lg text-green-primary text-center">
-            Credit: <span>$785</span>
+            Credit: <span id="userCredit"></span>
           </p>
           <button
             data-modal-target="new-listing-modal"
