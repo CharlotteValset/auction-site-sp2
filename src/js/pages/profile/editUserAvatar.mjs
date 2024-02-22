@@ -1,5 +1,5 @@
 import { apiBaseUrl, profileUrl } from "../../variables.mjs";
-import { fetchWithToken } from "../../auth/accesstoken.mjs";
+import { fetchWithToken, token } from "../../auth/accesstoken.mjs";
 
 const editAvatar = async (event) => {
   // Prevent the form from submitting normally
@@ -8,6 +8,9 @@ const editAvatar = async (event) => {
   const userProfileString = localStorage.getItem("userProfile");
   const userProfileObject = JSON.parse(userProfileString);
   const userName = userProfileObject.name;
+
+  const URL = `${apiBaseUrl}${profileUrl}${userName}/media`;
+  console.log("URL:", URL);
 
   // Get form input values
   const avatarUrl = event.target.querySelector("#profile-image-url");
@@ -21,7 +24,7 @@ const editAvatar = async (event) => {
   try {
     // Send a PUT request to update the post
     const response = await fetchWithToken(
-      `${apiBaseUrl}${profileUrl}/${userName}/media`,
+      `${apiBaseUrl}${profileUrl}${userName}/media`,
       {
         method: "PUT",
         headers: {
@@ -31,8 +34,9 @@ const editAvatar = async (event) => {
         body: JSON.stringify(editAvatarData),
       },
     );
+    console.log("response:", response);
     // Check if the response indicates a successful update
-    if (response) {
+    if (response.ok) {
       // Display a success message to the user
       alert("Your post is updated!");
 

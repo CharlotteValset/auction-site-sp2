@@ -14,5 +14,5 @@ const userName = userProfileObject.name;
  * @returns {Promise<UserProfile>} - A promise that resolves to the user's profile data.
  */
 export const fetchUserProfile = async () => {
-  return await fetchWithToken(`${apiBaseUrl}${profileUrl}/${userName}`);
+  return await fetchWithToken(`${apiBaseUrl}${profileUrl}${userName}`);
 };
