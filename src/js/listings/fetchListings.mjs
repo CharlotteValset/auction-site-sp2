@@ -2,7 +2,7 @@ import { fetchWithToken } from "../auth/accesstoken.mjs";
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
 
 /**
- * Fetches all posts with an access token
+ * Fetches all listings with an access token
  * @returns {Promise} A promise representing the asynchronous operation of fetching listings.
  */
 export const fetchAllListings = async () => {
