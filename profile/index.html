@@ -15,6 +15,10 @@
       type="module"
       src="../src/js/pages/profile/displayUserData.mjs"
     ></script>
+    <script
+      type="module"
+      src="../src/js/pages/profile/editUserAvatar.mjs"
+    ></script>
     <link rel="stylesheet" href="../src/css/style.css" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <title>Profile - BidOnIt</title>
@@ -181,8 +185,8 @@
                       Update your profile image
                     </h3>
                     <form
+                      id="profile-image-form"
                       class="flex flex-col justify-center"
-                      action="/profile/"
                     >
                       <label class="form-control w-72 mx-auto">
                         <div class="label ps-2">
@@ -191,13 +195,20 @@
                           >
                         </div>
                         <input
+                          id="profile-image-url"
                           type="text"
                           placeholder=""
                           class="input input-bordered w-72 max-w-xs mb-8 rounded-full"
                         />
                       </label>
                       <div class="flex justify-center mx-auto mb-8">
-                        <button class="primary-button">Add Image</button>
+                        <button
+                          id="update-image-button"
+                          class="primary-button"
+                          type="submit"
+                        >
+                          Add Image
+                        </button>
                       </div>
                     </form>
                   </div>
