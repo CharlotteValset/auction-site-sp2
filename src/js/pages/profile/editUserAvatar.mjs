@@ -36,19 +36,19 @@ const editAvatar = async (event) => {
     );
     console.log("response:", response);
     // Check if the response indicates a successful update
-    if (response.ok) {
+    if (response.errors) {
+      // Display an error message if the update was not successful
+      alert("Failed to update the image. Please try again.");
+    } else {
       // Display a success message to the user
-      alert("Your post is updated!");
+      alert("Your profile image is updated!");
 
       // Redirect to the user's profile page after successful update
       window.location.href = "/profile/";
-    } else {
-      // Display an error message if the update was not successful
-      alert("Failed to update the post. Please try again.");
     }
   } catch (error) {
     // Throw an error with a detailed message if an error occurs during the update
-    throw new Error("Error updating post:", error);
+    throw new Error("Error updating image:", error);
   }
 };
 
