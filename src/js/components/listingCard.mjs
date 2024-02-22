@@ -1,6 +1,6 @@
 import placeholderImg from "../../../images/no_img.jpg";
 import { createCountdownTimer } from "../bids/bidCountdown.mjs";
-import { sortDesc } from "../utils/sortDesc.mjs";
+import { sortByAmountDesc } from "../utils/sortByAmountDesc.mjs";
 
 export const listingsCard = (data) => {
   const card = document.createElement("a");
@@ -46,7 +46,7 @@ export const listingsCard = (data) => {
   latestBidLabel.innerText = "Latest bid:";
   latestBidWrapper.appendChild(latestBidLabel);
 
-  const bids = sortDesc(data.bids);
+  const bids = sortByAmountDesc(data.bids);
   const latestBidAmount = document.createElement("span");
   latestBidAmount.className = "font-semibold";
   latestBidAmount.innerText =
