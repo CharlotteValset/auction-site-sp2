@@ -1,4 +1,4 @@
-export const sortDesc = (array) => {
+export const sortByAmountDesc = (array) => {
   const sortedArray = array.sort(function (a, b) {
     return b.amount - a.amount; // Sort in descending order by bid amount
   });

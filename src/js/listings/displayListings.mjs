@@ -1,6 +1,7 @@
 import { fetchAllListings } from "./fetchListings.mjs";
 import { createMessage } from "../errorHandling/errorMessage.mjs";
 import { listingsCard } from "../components/listingCard.mjs";
+import { sortByEndDate } from "../utils/sortByEndDate.mjs";
 
 // Targeting DOM elements
 const loaderContainer = document.querySelector(".loader-container");
@@ -31,13 +32,16 @@ export const displayAllListings = async () => {
     // Fetch listings
     const listings = await fetchAllListings();
 
-    console.log("listings", listings);
+    // Sort the listings by endsAt date using your sortAcs function
+    const sortedListings = sortByEndDate(listings);
+
+    console.log("sortedListings", sortedListings);
 
     // Clear existing cards from the container
     listingsContainer.innerHTML = "";
 
     // Iterate over each listing data and create a card for each listing
-    listings.forEach((data) => {
+    sortedListings.forEach((data) => {
       // Create a card element for the current listing data
       const listingCard = listingsCard(data);
       // Append the generated card to the container for all listings

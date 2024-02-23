@@ -1,12 +1,12 @@
 import { fetchWithToken } from "../auth/accesstoken.mjs";
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
 import { listingsCard } from "../components/listingCard.mjs";
-
+import { sortByEndDate } from "../utils/sortByEndDate.mjs";
 // Array to store fetched listings
 let listingsArray = [];
 
 // URL to the fetch API
-const API_URL = `${apiBaseUrl}${allListingsUrl}?_bids=true&_active=true`;
+const API_URL = `${apiBaseUrl}${allListingsUrl}?_bids=true&_active=true&sort=created`;
 
 /**
  * Renders all the listings in the selected container.
@@ -90,6 +90,9 @@ const initialize = async () => {
   try {
     // Fetch listings from the API
     listingsArray = await fetchWithToken(API_URL);
+
+    // Sort the listings by endsAt date in ascending order using sortAcs
+    listingsArray = sortByEndDate(listingsArray);
     // Render the fetched listings
     renderListings(listingsArray);
   } catch (error) {
