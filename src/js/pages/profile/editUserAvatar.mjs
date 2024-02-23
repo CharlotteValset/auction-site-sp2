@@ -1,7 +1,7 @@
 import { apiBaseUrl, profileUrl } from "../../variables.mjs";
 import { fetchWithToken, token } from "../../auth/accesstoken.mjs";
 
-const editAvatar = async (event) => {
+export const editAvatar = async (event) => {
   // Prevent the form from submitting normally
   event.preventDefault();
 
@@ -40,9 +40,6 @@ const editAvatar = async (event) => {
       // Display an error message if the update was not successful
       alert("Failed to update the image. Please try again.");
     } else {
-      // Display a success message to the user
-      alert("Your profile image is updated!");
-
       // Redirect to the user's profile page after successful update
       window.location.href = "/profile/";
     }
@@ -52,8 +49,8 @@ const editAvatar = async (event) => {
   }
 };
 
-// Event listener for form submission
+/* // Event listener for form submission
 document.addEventListener("DOMContentLoaded", () => {
   const editAvatarForm = document.querySelector("#profile-image-form");
   editAvatarForm.addEventListener("submit", editAvatar);
-});
+}); */
