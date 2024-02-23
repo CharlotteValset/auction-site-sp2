@@ -32,8 +32,6 @@ export const displayAllListings = async () => {
     // Fetch listings
     const listings = await fetchAllListings();
 
-    console.log("listings", listings);
-
     // Sort the listings by endsAt date using your sortAcs function
     const sortedListings = sortByEndDate(listings);
 
