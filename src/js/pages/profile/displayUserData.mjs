@@ -11,7 +11,7 @@ const userCreditContainer = document.querySelector("#userCredit");
  *
  * @throws {Error} - Throws an error if there's an issue during the display process.
  */
-const displayUserData = async () => {
+export const displayUserData = async () => {
   try {
     // Fetch user profile data
     const data = await fetchUserProfile();
@@ -28,5 +28,3 @@ const displayUserData = async () => {
     throw new Error(error);
   }
 };
-// Initial call to display the single post card
-displayUserData();

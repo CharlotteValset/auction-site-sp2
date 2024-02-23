@@ -2,14 +2,14 @@ import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
 import { displayAllListings } from "./displayListings.mjs";
 
 // Get the form element for creating a new post
-const createListingForm = document.querySelector("#new-listing");
+export const createListingForm = document.querySelector("#new-listing");
 
 /**
  * Handles the form submission to create a new listing.
  * @param {Event} event - The form submission event.
  * @returns {Promise<void>} - A promise that resolves when the listing creation is complete.
  */
-const createListing = async (event) => {
+export const createListing = async (event) => {
   // Prevent the default form submission behavior
   event.preventDefault();
 
@@ -73,5 +73,5 @@ const createListing = async (event) => {
   }
 };
 
-// Add an event listener to the form for the submit event
-createListingForm.addEventListener("submit", createListing);
+/* // Add an event listener to the form for the submit event
+createListingForm.addEventListener("submit", createListing); */
