@@ -9,8 +9,12 @@
       href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script type="module" src="../src/js/auth/logout.mjs" defer></script>
     <script type="module" src="../src/js/main.js" defer></script>
+    <script
+      type="module"
+      src="../src/js/pages/singleListing/index.mjs"
+      defer
+    ></script>
     <link rel="stylesheet" href="../src/css/style.css" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 
@@ -289,7 +293,7 @@
       <h1>Listing Specific Page</h1>
       <div class="flex justify-start max-w-screen-2xl"></div>
       <section
-        class="mx-auto mb-10 max-w-screen-2xl w-full sm:w-11/12 flex flex-col justify-center"
+        class="mx-auto mb-10 max-w-screen-lg w-full sm:w-11/12 flex flex-col justify-center"
       >
         <button
           onclick="history.back()"
@@ -297,13 +301,13 @@
         >
           &lt; BACK
         </button>
-        <div class="flex flex-col lg:flex-row">
+        <div class="flex flex-col">
           <div
             id="indicators-carousel"
             class="relative w-full"
             data-carousel="static"
           >
-            <div class="max-h-96">
+            <div class="max-h-full">
               <!-- Carousel wrapper -->
               <div class="relative h-56 overflow-hidden md:h-96">
                 <!-- Item 1 -->
@@ -312,24 +316,24 @@
                   data-carousel-item="active"
                 >
                   <img
-                    src="../images/comfy-sofa.jpg"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    id="listing-image-1"
+                    class="absolute block w-full md:w-10/12 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-contain"
                     alt="..."
                   />
                 </div>
                 <!-- Item 2 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                   <img
-                    src="../images/sofa2.jpg"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    id="listing-image-2"
+                    class="absolute block w-full md:w-10/12 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                     alt="..."
                   />
                 </div>
                 <!-- Item 3 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                   <img
-                    src="../images/sofa-3.jpg"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    id="listing-image-3"
+                    class="absolute block w-full md:w-10/12 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                     alt="..."
                   />
                 </div>
@@ -337,7 +341,7 @@
             </div>
             <!-- Slider indicators -->
             <div
-              class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 lg:bottom-96 left-1/2"
+              class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2"
             >
               <button
                 type="button"
@@ -368,10 +372,10 @@
               data-carousel-prev
             >
               <span
-                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/50 md:bg-green-primary/30 md:group-hover:bg-green-primary/50 group-hover:bg-green-primary/30 group-focus:ring-2 group-focus:ring-green-primary group-focus:outline-none"
               >
                 <svg
-                  class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                  class="w-4 h-4 text-green-primary rtl:rotate-180"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -381,7 +385,7 @@
                     stroke="currentColor"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
+                    stroke-width="1"
                     d="M5 1 1 5l4 4"
                   />
                 </svg>
@@ -394,10 +398,10 @@
               data-carousel-next
             >
               <span
-                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/50 md:bg-green-primary/30 md:group-hover:bg-green-primary/50 group-hover:bg-green-primary/30 group-focus:ring-2 group-focus:ring-green-primary group-focus:outline-none"
               >
                 <svg
-                  class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                  class="w-4 h-4 text-green-primary rtl:rotate-180"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -407,7 +411,7 @@
                     stroke="currentColor"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
+                    stroke-width="1"
                     d="m1 9 4-4-4-4"
                   />
                 </svg>
@@ -416,24 +420,29 @@
             </button>
           </div>
 
-          <div class="mx-10">
-            <h2 class="font-kodchasan font-size22 my-4">Comfy Sofa</h2>
-            <p class="font-extralight">
-              This is the best thing ever made, but its time for it to have new
-              owners. Please take good care of it!
-            </p>
-            <div class="flex flex-col lg:flex-row justify-start lg:gap-12">
+          <div class="mx-10 sm:mx-4 md:mx-20 md:px-4 text-center sm:text-left">
+            <h2 id="listing-title" class="font-kodchasan font-size22 my-4"></h2>
+            <p id="listing-description" class="text-lg font-extralight"></p>
+            <div
+              class="flex flex-row justify-center sm:justify-start gap-12 mx-auto w-64 sm:w-auto"
+            >
               <div
-                class="flex flex-col justify-center text-center lg:justify-items-start my-5 lg:mt-5 lg:mb-3"
+                class="flex flex-col justify-center text-center sm:text-left sm:justify-items-start my-6"
               >
                 <p class="font-extralight">Latest bid</p>
-                <p class="text-2xl font-medium">$215</p>
+                <p
+                  id="listing-hightest-bid"
+                  class="text:lg sm:text-2xl font-medium"
+                ></p>
               </div>
               <div
-                class="flex flex-row lg:flex-col justify-center text-center my-5 lg:mt-5 lg:mb-3"
+                class="flex flex-col justify-center text-center sm:text-left my-6"
               >
                 <p class="font-extralight mr-4 lg:mr-0">Expires in</p>
-                <span class="lg:text-2xl font-medium">0d 10h 2m 34s</span>
+                <span
+                  id="listing-endsIn"
+                  class="text:lg sm:text-2xl font-medium"
+                ></span>
               </div>
             </div>
 
@@ -441,7 +450,7 @@
               <h2 id="accordion-collapse-heading-1">
                 <button
                   type="button"
-                  class="flex items-center justify-around lg:justify-start w-full max-w-96 mt-8 lg:mt-2 py-2 pe-3 font-medium rtl:text-right text-darkest-grey gap-3"
+                  class="flex items-center justify-center sm:justify-start w-64 mx-auto sm:mx-0 rounded-xl mt-4 py-2 px-3 font-medium rtl:text-right text-darkest-grey gap-32 border border-medium-grey/50"
                   data-accordion-target="#accordion-collapse-body-1"
                   aria-expanded="true"
                   aria-controls="accordion-collapse-body-1"
@@ -467,55 +476,55 @@
               </h2>
               <div
                 id="accordion-collapse-body-1"
-                class="hidden"
+                class="flex items-center justify-center sm:justify-start w-64 mx-auto sm:mx-0 mt-1 p-3 rounded-xl border border-medium-grey/50"
                 aria-labelledby="accordion-collapse-heading-1"
               >
-                <div
-                  class="flex flex-col mb-8 px-5 py-1 dark:border-gray-700 dark:bg-gray-900"
-                >
-                  <div
-                    class="flex flex-row justify-around max-w-96 lg:justify-between lg:w-56"
-                  >
-                    <p class="mb-2">23.01.24</p>
-                    <p class="mb-2">16.34</p>
-                    <p class="mb-2">$215</p>
+                <div id="bid-history" class="flex flex-col justify-center w-56">
+                  <div class="flex flex-row justify-between w-56">
+                    <p id="bid-date" class="mb-2">23.01.24</p>
+                    <p id="bid-time" class="mb-2">16.34</p>
+                    <p id="bid-amount" class="mb-2">$215</p>
                   </div>
-                  <div
-                    class="flex flex-row justify-around max-w-96 lg:justify-between lg:w-56"
-                  >
+                  <div class="flex flex-row justify-between w-56">
                     <p class="mb-2">23.01.24</p>
                     <p class="mb-2">10.07</p>
                     <p class="mb-2">$200</p>
                   </div>
-                  <div
-                    class="flex flex-row justify-around max-w-96 lg:justify-between lg:w-56"
-                  >
-                    <p class="mb-2">22.01.24</p>
-                    <p class="mb-2">23.34</p>
-                    <p class="mb-2">$150</p>
+                  <div class="flex flex-row justify-between w-56">
+                    <p class="">22.01.24</p>
+                    <p class="">23.34</p>
+                    <p class="">$150</p>
                   </div>
                 </div>
               </div>
             </div>
             <section class="flex flex-col">
-              <div id="userNotLoggedIn" class="text-center my-6">
-                <p class="font-size22">Would you like to</p>
-                <p
-                  class="font-kodchasan text-green-primary text-3xl font-semibold"
-                >
-                  BidOnIt?
-                </p>
+              <div
+                id="userNotLoggedIn"
+                class="flex flex-col w-64 mt-6 mx-auto sm:mx-0"
+              >
+                <div class="flex flex-col items-center">
+                  <p class="font-size22 text-center">Would you like to</p>
+                  <p
+                    class="font-kodchasan text-green-primary text-3xl font-semibold text-center"
+                  >
+                    BidOnIt?
+                  </p>
+                </div>
                 <div class="flex justify-center gap-3 mt-6">
                   <a href="../sign-up/" class="primary-button"> Sign Up </a>
                   <a href="../log-in/" class="secondary-button"> Log In </a>
                 </div>
               </div>
-              <div id="userIsLoggedIn">
+              <div
+                id="userIsLoggedIn"
+                class="flex flex-col w-64 mt-6 mx-auto sm:mx-0"
+              >
                 <div
                   class="flex flex-row justify-center mt-6 text-green-primary text-lg"
                 >
-                  <p>Your current credit:</p>
-                  <p class="font-medium ml-2">$785</p>
+                  <p class="text-center">Your current credit:</p>
+                  <p id="users-current-credit" class="font-medium ml-2"></p>
                 </div>
                 <form>
                   <div class="flex justify-center mt-5">
