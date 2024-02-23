@@ -1,13 +1,8 @@
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
 import { displayAllListings } from "./displayListings.mjs";
 
-// Event listener for when the DOM content has loaded
-document.addEventListener("DOMContentLoaded", () => {
-  // Get the form element for creating a new post
-  const createListingForm = document.querySelector("#new-listing");
-  // Add an event listener to the form for the submit event
-  createListingForm.addEventListener("submit", createListing);
-});
+// Get the form element for creating a new post
+const createListingForm = document.querySelector("#new-listing");
 
 /**
  * Handles the form submission to create a new listing.
@@ -70,7 +65,13 @@ const createListing = async (event) => {
     await displayAllListings();
     window.location.href = "../../../index.html";
   } catch (error) {
-    // Throw an error with a detailed message if an error occurs
-    throw new Error("Error creating post:", error);
+    // Log the detailed error message
+    console.error("Error creating post:", error.message);
+
+    // Rethrow the error if needed
+    throw error;
   }
 };
+
+// Add an event listener to the form for the submit event
+createListingForm.addEventListener("submit", createListing);
