@@ -58,7 +58,7 @@
           </button>
           <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul
-              class="text-center font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-light-grey md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+              class="text-center text-lg flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-light-grey md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
             >
               <li>
                 <a
@@ -71,14 +71,14 @@
               <li>
                 <a
                   href="../sign-up/"
-                  class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  class="isNotLoggedIn block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Sign Up</a
                 >
               </li>
               <li>
                 <a
                   href="../log-in/"
-                  class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  class="isNotLoggedIn block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Log In</a
                 >
               </li>
@@ -86,21 +86,21 @@
                 <a
                   data-modal-target="new-listing-modal"
                   data-modal-toggle="new-listing-modal"
-                  class="cursor-pointer block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  class="isLoggedIn cursor-pointer block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Add listing</a
                 >
               </li>
               <li>
                 <a
                   href="../profile/"
-                  class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  class="isLoggedIn block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >My Profile</a
                 >
               </li>
               <li>
                 <a
                   id="logout-button"
-                  class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  class="isLoggedIn block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Log out</a
                 >
               </li>
