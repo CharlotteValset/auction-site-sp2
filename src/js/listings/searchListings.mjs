@@ -86,7 +86,7 @@ searchForm.addEventListener("submit", function (event) {
  * Initializes the app by fetching posts and rendering them.
  * @throws {Error} - Throws an error if there's an issue during the fetch operation.
  */
-const initialize = async () => {
+export const initialize = async () => {
   try {
     // Fetch listings from the API
     listingsArray = await fetchWithToken(API_URL);
