@@ -70,7 +70,11 @@ export const displaySingleListingsData = async () => {
 
     listingTitle.innerText = data.title;
 
-    listingDescription.innerText = `"${data.description}"`;
+    if (data.description !== "null") {
+      listingDescription.innerText = data.description;
+    } else {
+      listingDescription.innerText = "";
+    }
 
     const bids = sortByAmountDesc(data.bids);
     listingHighestBid.innerText =
