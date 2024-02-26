@@ -58,6 +58,3 @@ export const displayAllListings = async () => {
     loaderContainer.style.display = "none";
   }
 };
-
-// Initial call to display blog cards
-displayAllListings();
