@@ -1,3 +1,5 @@
+import { token } from "../../auth/accesstoken.mjs";
+import { isLoggedIn, isLoggedOut } from "../../auth/isUserLoggedIn.mjs";
 import {
   displaySingleListingsData,
   displayUserCredit,
@@ -16,6 +18,20 @@ displaySingleListingsData();
 displayUserCredit();
 
 displayBidHistory();
+
+const loggedInElement = document.querySelector("#userIsLoggedIn");
+const loggedOutElement = document.querySelector("#userNotLoggedIn");
+const notLoggedInNavBar = document.querySelectorAll(".isNotLoggedIn");
+const isLoggedInNavBar = document.querySelectorAll(".isLoggedIn");
+// Use the functions with specific elements and the access token
+isLoggedIn(token, loggedInElement);
+isLoggedOut(token, loggedOutElement);
+isLoggedInNavBar.forEach((element) => {
+  isLoggedIn(token, element);
+});
+notLoggedInNavBar.forEach((element) => {
+  isLoggedOut(token, element);
+});
 
 // Add an event listener to the form for the submit event
 addBidToListingForm.addEventListener("submit", addBidToListing);

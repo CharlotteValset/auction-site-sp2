@@ -1,6 +1,6 @@
-import { apiBaseUrl, allListingsUrl } from "../../variables.mjs";
+import { apiBaseUrl, allListingsUrl, profileUrl } from "../../variables.mjs";
 import { fetchWithToken, getData } from "../../auth/accesstoken.mjs";
-import { fetchUserProfile } from "../profile/fetchUserProfile.mjs";
+//import { fetchUserProfile } from "../profile/fetchUserProfile.mjs";
 import { sortByAmountDesc } from "../../utils/sortByAmountDesc.mjs";
 import { createCountdownTimer } from "../../bids/bidCountdown.mjs";
 import { formatDateString } from "../../utils/formatDate.mjs";
@@ -12,7 +12,7 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 
-export const fetchSinglePost = async (id) => {
+export const fetchSingleListing = async (id) => {
   return await fetchWithToken(
     `${apiBaseUrl}${allListingsUrl}/${id}?_bids=true`,
     getData,
@@ -28,7 +28,9 @@ const listingDescription = document.querySelector("#listing-description");
 const listingHighestBid = document.querySelector("#listing-hightest-bid");
 const listingEndsIn = document.querySelector("#listing-endsIn");
 const usersCurrentCredit = document.querySelector("#users-current-credit");
-
+const accessToken = localStorage.getItem("accessToken");
+const userCreditContainer = document.querySelector("#user-credit");
+const accordionCollapseBody = document.querySelector("#accordion-collapse");
 /**
  * Creates an HTML card element for a single post.
  * @param {Object} listingData The data for the post.
@@ -37,7 +39,7 @@ const usersCurrentCredit = document.querySelector("#users-current-credit");
 export const displaySingleListingsData = async () => {
   try {
     // Fetch listing data
-    const data = await fetchSinglePost(id);
+    const data = await fetchSingleListing(id);
     console.log("Listing-data:", data);
 
     if (
@@ -90,60 +92,75 @@ export const displaySingleListingsData = async () => {
 };
 
 export const displayBidHistory = async () => {
-  const data = await fetchSinglePost(id);
+  if (accessToken) {
+    const data = await fetchSingleListing(id);
+    const bids = sortByAmountDesc(data.bids);
 
-  // Bid history container
-  const bids = sortByAmountDesc(data.bids);
+    const bidHistoryContainer = document.querySelector("#bid-history");
+    bidHistoryContainer.innerHTML = "";
 
-  const bidHistoryContainer = document.querySelector("#bid-history");
+    for (let i = 0; i < bids.length; i++) {
+      const bid = bids[i];
 
-  // Clear the existing content
-  bidHistoryContainer.innerHTML = "";
+      // Create a new row for each bid
+      const row = document.createElement("div");
+      row.className = "flex flex-row justify-between w-56 mb-1";
 
-  for (let i = 0; i < bids.length; i++) {
-    const bid = bids[i];
+      // Create individual elements for date, time, and amount
+      const dateElement = document.createElement("p");
+      dateElement.className = "mb-1";
+      const formattedDate = formatDateString(bid.created);
+      dateElement.innerText = formattedDate;
 
-    // Create a new row for each bid
-    const row = document.createElement("div");
-    row.className = "flex flex-row justify-between w-56 mb-1";
+      const timeElement = document.createElement("p");
+      timeElement.className = "mb-1";
+      const formattedTime = formatTimeString(bid.created);
+      timeElement.innerText = formattedTime;
 
-    // Create individual elements for date, time, and amount
-    const dateElement = document.createElement("p");
-    dateElement.className = "mb-1";
-    const formattedDate = formatDateString(bid.created);
-    dateElement.innerText = formattedDate;
+      const amountElement = document.createElement("p");
+      amountElement.className = "mb-1";
+      amountElement.textContent = `$ ${bid.amount}`;
 
-    const timeElement = document.createElement("p");
-    timeElement.className = "mb-1";
-    const formattedTime = formatTimeString(bid.created);
-    timeElement.innerText = formattedTime;
+      // Append date, time, and amount to the row
+      row.appendChild(dateElement);
+      row.appendChild(timeElement);
+      row.appendChild(amountElement);
 
-    const amountElement = document.createElement("p");
-    amountElement.className = "mb-1";
-    amountElement.textContent = `$ ${bid.amount}`;
+      // Append the row to the bid history container
+      bidHistoryContainer.appendChild(row);
+    }
 
-    // Append date, time, and amount to the row
-    row.appendChild(dateElement);
-    row.appendChild(timeElement);
-    row.appendChild(amountElement);
-
-    // Append the row to the bid history container
-    bidHistoryContainer.appendChild(row);
+    if (bids.length == 0) {
+      accordionCollapseBody.style.display = "none";
+    }
   }
-
-  const accordionCollapseBody = document.querySelector("#accordion-collapse");
-
-  if (bids.length == 0) {
+  if (!accessToken) {
     accordionCollapseBody.style.display = "none";
   }
 };
 
+const user = JSON.parse(localStorage.getItem("userProfile"));
+const fetchUserData = async () => {
+  return await fetchWithToken(`${apiBaseUrl}${profileUrl}${user.name}?`);
+};
+
 export const displayUserCredit = async () => {
   try {
-    // Fetch user profile data
-    const data = await fetchUserProfile();
+    if (accessToken) {
+      const userProfileString = localStorage.getItem("userProfile");
+      const userProfileObject = JSON.parse(userProfileString);
+      const userName = userProfileObject.name;
+      console.log(userName);
 
-    usersCurrentCredit.innerText = `$ ${data.credits}`;
+      // Fetch user profile data
+      const userData = await fetchUserData();
+
+      userCreditContainer.style.display = "block"; // Show the user credit container
+
+      usersCurrentCredit.innerText = `Your current credit: $ ${userData.credits}`;
+    } else {
+      userCreditContainer.style.display = "none"; // Hide the user credit container
+    }
   } catch (error) {
     // Throw an error
     throw new Error(error);

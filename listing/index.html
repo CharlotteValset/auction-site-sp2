@@ -73,39 +73,39 @@
                   >Home</a
                 >
               </li>
-              <li>
+              <li class="isNotLoggedIn">
                 <a
                   href="../sign-up/"
-                  class="isNotLoggedIn block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Sign Up</a
                 >
               </li>
-              <li>
+              <li class="isNotLoggedIn">
                 <a
                   href="../log-in/"
-                  class="isNotLoggedIn block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Log In</a
                 >
               </li>
-              <li>
+              <li class="isLoggedIn">
                 <a
                   data-modal-target="new-listing-modal"
                   data-modal-toggle="new-listing-modal"
-                  class="isLoggedIn cursor-pointer block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  class="cursor-pointer block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Add listing</a
                 >
               </li>
-              <li>
+              <li class="isLoggedIn">
                 <a
                   href="../profile/"
-                  class="isLoggedIn block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >My Profile</a
                 >
               </li>
-              <li>
+              <li class="isLoggedIn">
                 <a
                   id="logout-button"
-                  class="isLoggedIn block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Log out</a
                 >
               </li>
@@ -376,7 +376,7 @@
             ></h2>
             <p id="listing-description" class="text-lg font-extralight"></p>
             <div
-              class="flex flex-row justify-center sm:justify-start gap-12 mx-auto w-64 sm:w-auto"
+              class="flex flex-row justify-center sm:justify-start gap-10 mx-auto w-full sm:w-auto"
             >
               <div
                 class="flex flex-col justify-center text-center sm:text-left sm:justify-items-start my-6"
@@ -390,7 +390,7 @@
               <div
                 class="flex flex-col justify-center text-center sm:text-left my-6"
               >
-                <p class="font-extralight mr-4 lg:mr-0">Expires in</p>
+                <p class="font-extralight">Expires in</p>
                 <span
                   id="listing-endsIn"
                   class="text:lg sm:text-2xl font-medium"
@@ -457,13 +457,16 @@
               </div>
               <div
                 id="userIsLoggedIn"
-                class="flex flex-col w-64 mt-6 mx-auto sm:mx-0"
+                class="flex flex-col w-64 mt-2 mx-auto sm:mx-0"
               >
                 <div
+                  id="user-credit"
                   class="flex flex-row justify-center mt-6 text-green-primary text-lg"
                 >
-                  <p class="text-center">Your current credit:</p>
-                  <p id="users-current-credit" class="font-medium ml-2"></p>
+                  <p
+                    id="users-current-credit"
+                    class="text-center font-medium"
+                  ></p>
                 </div>
                 <div id="successMessage"></div>
                 <form id="addBid">
