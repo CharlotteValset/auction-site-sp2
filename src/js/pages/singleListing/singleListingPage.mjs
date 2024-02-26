@@ -1,6 +1,5 @@
 import { apiBaseUrl, allListingsUrl, profileUrl } from "../../variables.mjs";
 import { fetchWithToken, getData } from "../../auth/accesstoken.mjs";
-//import { fetchUserProfile } from "../profile/fetchUserProfile.mjs";
 import { sortByAmountDesc } from "../../utils/sortByAmountDesc.mjs";
 import { createCountdownTimer } from "../../bids/bidCountdown.mjs";
 import { formatDateString } from "../../utils/formatDate.mjs";
