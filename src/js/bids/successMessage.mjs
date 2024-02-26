@@ -8,7 +8,7 @@ export const successMessage = () => {
 
   const successMessageText = document.createElement("p");
   successMessageText.className = "text-xl text-center mx-auto my-3";
-  successMessageText.innerText = "Bid added successfully! Good luck!";
+  successMessageText.innerText = "Your bid is confirmed. Good Luck!";
   successMessage.appendChild(successMessageText);
 
   const successMessageDecor = document.createElement("img");
