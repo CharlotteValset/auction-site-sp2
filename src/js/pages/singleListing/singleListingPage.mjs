@@ -3,6 +3,8 @@ import { fetchWithToken, getData } from "../../auth/accesstoken.mjs";
 import { fetchUserProfile } from "../profile/fetchUserProfile.mjs";
 import { sortByAmountDesc } from "../../utils/sortByAmountDesc.mjs";
 import { createCountdownTimer } from "../../bids/bidCountdown.mjs";
+import { formatDateString } from "../../utils/formatDate.mjs";
+import { formatTimeString } from "../../utils/formatTime.mjs";
 import placeholderImg from "../../../../images/no_img.jpg";
 
 // Extracting the post ID from the URL query string
@@ -10,7 +12,7 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 
-const fetchSinglePost = async (id) => {
+export const fetchSinglePost = async (id) => {
   return await fetchWithToken(
     `${apiBaseUrl}${allListingsUrl}/${id}?_bids=true`,
     getData,
@@ -87,12 +89,61 @@ export const displaySingleListingsData = async () => {
   }
 };
 
+export const displayBidHistory = async () => {
+  const data = await fetchSinglePost(id);
+
+  // Bid history container
+  const bids = sortByAmountDesc(data.bids);
+
+  const bidHistoryContainer = document.querySelector("#bid-history");
+
+  // Clear the existing content
+  bidHistoryContainer.innerHTML = "";
+
+  for (let i = 0; i < bids.length; i++) {
+    const bid = bids[i];
+
+    // Create a new row for each bid
+    const row = document.createElement("div");
+    row.className = "flex flex-row justify-between w-56 mb-1";
+
+    // Create individual elements for date, time, and amount
+    const dateElement = document.createElement("p");
+    dateElement.className = "mb-1";
+    const formattedDate = formatDateString(bid.created);
+    dateElement.innerText = formattedDate;
+
+    const timeElement = document.createElement("p");
+    timeElement.className = "mb-1";
+    const formattedTime = formatTimeString(bid.created);
+    timeElement.innerText = formattedTime;
+
+    const amountElement = document.createElement("p");
+    amountElement.className = "mb-1";
+    amountElement.textContent = `$ ${bid.amount}`;
+
+    // Append date, time, and amount to the row
+    row.appendChild(dateElement);
+    row.appendChild(timeElement);
+    row.appendChild(amountElement);
+
+    // Append the row to the bid history container
+    bidHistoryContainer.appendChild(row);
+  }
+
+  const accordionCollapseBody = document.querySelector("#accordion-collapse");
+
+  if (bids.length == 0) {
+    accordionCollapseBody.style.display = "none";
+  }
+};
+
 export const displayUserCredit = async () => {
   try {
     // Fetch user profile data
     const data = await fetchUserProfile();
 
-    usersCurrentCredit.innerText = data.credits;
+    usersCurrentCredit.innerText = `$ ${data.credits}`;
   } catch (error) {
     // Throw an error
     throw new Error(error);
