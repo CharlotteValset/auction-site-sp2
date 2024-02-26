@@ -1,5 +1,7 @@
+//Imports
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
 import { displayAllListings } from "./displayListings.mjs";
+import { showAlert } from "../utils/showAlert.mjs";
 
 // Get the form element for creating a new post
 export const createListingForm = document.querySelector("#new-listing");
@@ -30,7 +32,7 @@ export const createListing = async (event) => {
   // Check if required fields are filled
   if (!title || !description || !bidDeadlineDate) {
     // Display an alert if required fields are not filled
-    alert("Please fill in all required fields");
+    showAlert("Please fill in all required fields");
     return;
   }
 
