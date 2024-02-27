@@ -40,7 +40,12 @@ export const createListing = async (event) => {
   const newListing = {
     title: title,
     description: description,
-    media: [imageUrl1, imageUrl2, imageUrl3],
+    media: [imageUrl1], // Always include imageUrl1
+
+    // Only include imageUrl2 and imageUrl3 if they are provided
+    ...(imageUrl2 && { media: [...newListing.media, imageUrl2] }),
+    ...(imageUrl3 && { media: [...newListing.media, imageUrl3] }),
+
     endsAt: bidDeadlineDate,
   };
 
@@ -74,6 +79,3 @@ export const createListing = async (event) => {
     throw error;
   }
 };
-
-/* // Add an event listener to the form for the submit event
-createListingForm.addEventListener("submit", createListing); */
