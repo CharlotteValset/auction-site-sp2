@@ -99,6 +99,3 @@ export const initialize = async () => {
     throw new Error("Error fetching listings:", error); // Re-throw the error if needed
   }
 };
-
-// Call the initialize function to start the app
-initialize();
