@@ -12,18 +12,21 @@ export const listingsCard = (data) => {
   cardImage.className =
     "rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover";
 
-  // Check if data.media is an array, has at least one element, and the first element is not the string "null"
+  const imageArray = data.media;
+
   if (
-    Array.isArray(data.media) &&
-    data.media.length > 0 &&
-    data.media[0] !== "null"
+    Array.isArray(imageArray) &&
+    imageArray.length > 0 &&
+    imageArray[0] !== "null"
   ) {
-    // If the conditions are met, set the image source to the first element of data.media
-    cardImage.src = data.media[0];
+    cardImage.src = imageArray[0];
   } else {
-    // If data.media is not an array, is empty, or the first element is "null", use the placeholder image
     cardImage.src = `${placeholderImg}`;
   }
+
+  cardImage.onerror = function () {
+    cardImage.src = `${placeholderImg}`;
+  };
 
   card.appendChild(cardImage);
 
