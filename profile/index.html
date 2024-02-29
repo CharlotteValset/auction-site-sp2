@@ -86,7 +86,7 @@
               <li>
                 <a
                   id="logout-button"
-                  class="block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
+                  class="cursor-pointer block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
                   >Log out</a
                 >
               </li>
@@ -340,58 +340,35 @@
             <h3
               class="text-center font-size22 text-darkest-grey mt-10 lg:mt-32 lg:text-left"
             >
-              My bids
+              My wins
             </h3>
-
+            <div id="no-user-win-container"></div>
             <div
-              id="listings-container"
+              id="user-win-container"
+              class="grid grid-flow-row grid-cols-1 justify-items-center sm:grid-cols-2 xl:grid-cols-3 gap-20 lg:gap-12 lg:gap-y-12 xl:gap-24 xl:gap-y-10 mx-auto my-3"
+            >
+              <div id="user-win-loader-container" class="loader-container">
+                <div class="content-loader"></div>
+                <p>Loading...</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3
+              class="text-center font-size22 text-darkest-grey mt-10 lg:text-left"
+            >
+              My active listings
+            </h3>
+            <div id="no-user-listings-container"></div>
+            <div
+              id="user-listings-container"
               class="grid grid-flow-row grid-cols-1 justify-items-center sm:grid-cols-2 xl:grid-cols-3 gap-20 lg:gap-12 lg:gap-y-12 xl:gap-24 xl:gap-y-10 mx-auto my-3"
             >
               <div class="loader-container">
                 <div class="content-loader"></div>
                 <p>Loading...</p>
               </div>
-              <a href="../listing/">
-                <div
-                  class="max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg"
-                >
-                  <img
-                    class="rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover"
-                    src="../images/sofa-3.jpg"
-                    alt=""
-                  />
-                  <div class="m-5">
-                    <h2
-                      class="mb-2 text-2xl font-normal font-kodchasan tracking-tight"
-                    >
-                      Comfy Sofa 1
-                    </h2>
-                    <div class="flex flex-row mb-2">
-                      <span class="mr-3">Latest bid:</span>
-                      <span class="font-medium">$215</span>
-                    </div>
-                    <div class="flex flex-row">
-                      <span class="mr-3">Expires in:</span>
-                      <span class="font-medium">0d 10h 2m</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-center font-size22 mt-10 xl:mt-16 xl:text-left">
-              My Listings
-            </h3>
-            <div
-              id="myListings"
-              class="grid grid-flow-row grid-cols-1 justify-items-center sm:grid-cols-2 xl:grid-cols-3 gap-20 lg:gap-12 lg:gap-y-12 xl:gap-24 xl:gap-y-10 mx-auto my-3"
-            >
-              <!--               <div class="loader-container">
-                <div class="content-loader"></div>
-                <p>Loading...</p>
-              </div> -->
-              <a href="../listing/">
+              <!--               <a href="../listing/">
                 <div
                   class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg"
                 >
@@ -416,7 +393,7 @@
                     </div>
                   </div>
                 </div>
-              </a>
+              </a> -->
             </div>
           </div>
         </section>

@@ -40,12 +40,7 @@ export const createListing = async (event) => {
   const newListing = {
     title: title,
     description: description,
-    media: [imageUrl1], // Always include imageUrl1
-
-    // Only include imageUrl2 and imageUrl3 if they are provided
-    ...(imageUrl2 && { media: [...newListing.media, imageUrl2] }),
-    ...(imageUrl3 && { media: [...newListing.media, imageUrl3] }),
-
+    media: [imageUrl1, imageUrl2, imageUrl3],
     endsAt: bidDeadlineDate,
   };
 
@@ -69,8 +64,8 @@ export const createListing = async (event) => {
     event.target.reset();
 
     // Refresh the displayed posts
-    await displayAllListings();
-    window.location.href = "../../../index.html";
+    //await displayAllListings();
+    window.location.href = "/index.html";
   } catch (error) {
     // Log the detailed error message
     console.error("Error creating post:", error.message);

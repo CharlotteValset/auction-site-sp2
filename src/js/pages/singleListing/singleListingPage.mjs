@@ -30,11 +30,7 @@ const usersCurrentCredit = document.querySelector("#users-current-credit");
 const accessToken = localStorage.getItem("accessToken");
 const userCreditContainer = document.querySelector("#user-credit");
 const accordionCollapseBody = document.querySelector("#accordion-collapse");
-/**
- * Creates an HTML card element for a single post.
- * @param {Object} listingData The data for the post.
- * @returns {HTMLElement} The generated HTML card element.
- */
+
 export const displaySingleListingsData = async () => {
   try {
     // Fetch listing data
