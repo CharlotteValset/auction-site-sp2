@@ -10,6 +10,10 @@ import {
   addBidToListingForm,
   addBidToListing,
 } from "../../bids/addBidToListing.mjs";
+import {
+  createListingForm,
+  createListing,
+} from "../../listings/addNewListing.mjs";
 
 // Initial call to display the single post card
 displaySingleListingsData();
@@ -32,6 +36,10 @@ isLoggedInNavBar.forEach((element) => {
 notLoggedInNavBar.forEach((element) => {
   isLoggedOut(token, element);
 });
+
+// Add an event listener to the form for the submit event
+
+createListingForm.addEventListener("submit", createListing);
 
 // Add an event listener to the form for the submit event
 addBidToListingForm.addEventListener("submit", addBidToListing);
