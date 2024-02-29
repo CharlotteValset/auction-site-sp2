@@ -67,6 +67,15 @@ export const displaySingleListingsData = async () => {
       listingImage3.src = `${placeholderImg}`;
     }
 
+    function handleImageError(image) {
+      image.onerror = function () {
+        image.src = placeholderImg;
+      };
+    }
+
+    const imageElements = [listingImage1, listingImage2, listingImage3];
+    imageElements.forEach(handleImageError);
+
     listingTitle.innerText = data.title;
 
     if (data.description !== "null") {
