@@ -3,15 +3,17 @@ import { createCountdownTimer } from "../bids/bidCountdown.mjs";
 import { sortByAmountDesc } from "../utils/sortByAmountDesc.mjs";
 
 export const listingsCard = (data) => {
-  const card = document.createElement("a");
-  card.href = `../../../listing/index.html?id=${data.id}`;
+  const card = document.createElement("div");
   card.className =
-    "max-w-sm sm:max-w-72 bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg";
+    "max-w-sm bg-white border border-gray-200  rounded-lg shadow hover:shadow-lg";
+
+  const cardHref = document.createElement("a");
+  cardHref.href = `../../../listing/index.html?id=${data.id}`;
+  card.appendChild(cardHref);
 
   const cardImage = document.createElement("img");
   cardImage.className =
     "rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover";
-
   const imageArray = data.media;
 
   if (
@@ -28,11 +30,11 @@ export const listingsCard = (data) => {
     cardImage.src = `${placeholderImg}`;
   };
 
-  card.appendChild(cardImage);
+  cardHref.appendChild(cardImage);
 
   const cardTextWrapper = document.createElement("div");
   cardTextWrapper.className = "p-5";
-  card.appendChild(cardTextWrapper);
+  cardHref.appendChild(cardTextWrapper);
 
   const cardHeading = document.createElement("h2");
   cardHeading.innerText = data.title;
