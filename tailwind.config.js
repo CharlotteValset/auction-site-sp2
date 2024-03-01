@@ -23,6 +23,10 @@ export default {
         "almost-white": "#FEFEFE",
         "medium2-grey": "#6B7280",
       },
+      screens: {
+        sm: "378px",
+        // => @media (min-width: 576px) { ... }
+      },
     },
   },
   plugins: [require("flowbite/plugin")],

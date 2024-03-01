@@ -5,15 +5,14 @@ import { sortByAmountDesc } from "../utils/sortByAmountDesc.mjs";
 export const listingsCard = (data) => {
   const card = document.createElement("div");
   card.className =
-    "max-w-sm bg-white border border-gray-200  rounded-lg shadow hover:shadow-lg";
+    "w-64 sm:w-96 md:w-72 bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg";
 
   const cardHref = document.createElement("a");
   cardHref.href = `../../../listing/index.html?id=${data.id}`;
   card.appendChild(cardHref);
 
   const cardImage = document.createElement("img");
-  cardImage.className =
-    "rounded-t-lg h-72 w-96 max-w-96 sm:h-64 sm:w-72 sm:max-w-72 object-cover";
+  cardImage.className = "rounded-t-lg w-72 h-64 sm:w-96 md:w-72 object-cover";
   const imageArray = data.media;
 
   if (
