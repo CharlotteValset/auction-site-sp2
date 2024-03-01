@@ -98,27 +98,27 @@
         <h1 class="text-center text-2xl">Please log in</h1>
       </div>
       <form id="login-form" class="flex flex-col" action="get">
-        <label class="form-control w-72 max-w-xs mx-auto">
+        <label class="form-control w-56 sm:w-72 max-w-xs mx-auto">
           <div class="label ps-2">
             <span class="label-text text-lg font-extralight">Email</span>
           </div>
           <input
             type="email"
             placeholder=""
-            class="input input-bordered w-72 max-w-xs mb-4 rounded-full"
+            class="input input-bordered w-56 sm:w-72 max-w-xs mb-4 rounded-full"
             required
             pattern="[\w\-.]+@stud.noroff.no$"
             title="Only @stud.noroff.no domains are allowed to log in"
           />
         </label>
-        <label class="form-control w-72 max-w-xs mx-auto">
+        <label class="form-control w-56 sm:w-72 max-w-xs mx-auto">
           <div class="label ps-2">
             <span class="label-text text-lg font-extralight">Password</span>
           </div>
           <input
             type="password"
             placeholder=""
-            class="input input-bordered w-72 max-w-xs mb-4 rounded-full"
+            class="input input-bordered w-56 sm:w-72 max-w-xs mb-4 rounded-full"
             minlength="8"
             required
             title="Password must be at least 8 characters long"
