@@ -1,6 +1,5 @@
 //Imports
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
-import { displayAllListings } from "./displayListings.mjs";
 import { showAlert } from "../utils/showAlert.mjs";
 
 // Get the form element for creating a new post
@@ -36,11 +35,19 @@ export const createListing = async (event) => {
     return;
   }
 
-  // Create a new post object with form input values
+  const mediaInput = event.target.querySelectorAll(".addImage");
+  const media = [];
+
+  mediaInput.forEach(function (input) {
+    if (input.value) {
+      media.push(input.value);
+    }
+  });
+
   const newListing = {
     title: title,
     description: description,
-    media: [imageUrl1, imageUrl2, imageUrl3],
+    media: media,
     endsAt: bidDeadlineDate,
   };
 
