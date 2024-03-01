@@ -63,8 +63,6 @@ export const createListing = async (event) => {
     // Reset the form after successful post creation
     event.target.reset();
 
-    // Refresh the displayed posts
-    //await displayAllListings();
     window.location.href = "/index.html";
   } catch (error) {
     // Log the detailed error message
