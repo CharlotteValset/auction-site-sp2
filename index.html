@@ -159,7 +159,7 @@
                 Add new listing
               </h3>
               <form id="new-listing" class="flex flex-col justify-center">
-                <label class="form-control w-72 mx-auto">
+                <label class="form-control w-56 sm:w-72 mx-auto">
                   <div class="label ps-2">
                     <span class="label-text text-lg font-extralight"
                       >Title</span
@@ -169,13 +169,13 @@
                     id="new-listing-Title"
                     type="text"
                     placeholder=""
-                    class="input input-bordered w-72 max-w-xs mb-4 rounded-full"
+                    class="input input-bordered w-56 sm:w-72 max-w-xs mb-4 rounded-full"
                     minlength="3"
                     required
                     title="Title must be at least 3 characters long"
                   />
                 </label>
-                <label class="form-control w-72 mx-auto">
+                <label class="form-control w-56 sm:w-72 mx-auto">
                   <div class="label ps-2">
                     <span class="label-text text-lg font-extralight"
                       >Description</span
@@ -184,10 +184,10 @@
                   <textarea
                     type="text"
                     id="new-listing-description"
-                    class="textarea-height w-72 rounded-3xl mb-4"
+                    class="textarea-height w-56 sm:w-72 rounded-3xl mb-4"
                   ></textarea>
                 </label>
-                <label class="form-control w-72 mx-auto">
+                <label class="form-control w-56 sm:w-72 mx-auto">
                   <div class="label ps-2">
                     <span class="label-text text-lg font-extralight"
                       >Add image url</span
@@ -197,23 +197,25 @@
                     id="new-listing-image1"
                     type="text"
                     placeholder=""
-                    class="input input-bordered w-72 max-w-xs mb-4 rounded-full"
+                    class="input input-bordered w-56 sm:w-72 max-w-xs mb-4 rounded-full"
                     required
                   />
                   <input
                     id="new-listing-image2"
                     type="text"
                     placeholder=""
-                    class="input input-bordered w-72 max-w-xs mb-4 rounded-full"
+                    class="input input-bordered w-56 sm:w-72 max-w-xs mb-4 rounded-full"
                   />
                   <input
                     id="new-listing-image3"
                     type="text"
                     placeholder=""
-                    class="input input-bordered w-72 max-w-xs mb-5 rounded-full"
+                    class="input input-bordered w-56 sm:w-72 max-w-xs mb-5 rounded-full"
                   />
                 </label>
-                <div class="w-72 mx-auto transform text-lg duration-300">
+                <div
+                  class="w-56 sm:w-72 mx-auto transform text-lg duration-300"
+                >
                   <div class="label ps-2">
                     <label
                       for="bid-deadline-date"
@@ -225,7 +227,7 @@
                     name="date"
                     type="datetime-local"
                     id="bid-deadline-date"
-                    class="input w-72 max-w-xs my-1 rounded-full text-medium2-grey"
+                    class="input w-56 sm:w-72 max-w-xs my-1 rounded-full text-medium2-grey"
                     required
                   />
                 </div>
