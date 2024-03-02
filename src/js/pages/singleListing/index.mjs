@@ -4,6 +4,7 @@ import {
   displaySingleListingsData,
   displayUserCredit,
   displayBidHistory,
+  removeCreditAndAddBidIfUserIsSeller,
 } from "./singleListingPage.mjs";
 import { logout, logOutButton } from "../../auth/logout.mjs";
 import {
@@ -20,7 +21,7 @@ displaySingleListingsData();
 
 // Initial call to display the single post card
 displayUserCredit();
-
+removeCreditAndAddBidIfUserIsSeller();
 displayBidHistory();
 
 const loggedInElement = document.querySelector("#userIsLoggedIn");
