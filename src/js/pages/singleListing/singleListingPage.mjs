@@ -1,9 +1,11 @@
 import { apiBaseUrl, allListingsUrl, profileUrl } from "../../variables.mjs";
+import { fetchUserProfile, user } from "../profile/fetchUserProfile.mjs";
 import { fetchWithToken, getData } from "../../auth/accesstoken.mjs";
 import { sortByAmountDesc } from "../../utils/sortByAmountDesc.mjs";
 import { createCountdownTimer } from "../../bids/bidCountdown.mjs";
 import { formatDateString } from "../../utils/formatDate.mjs";
 import { formatTimeString } from "../../utils/formatTime.mjs";
+import { addBidToListingForm } from "../../bids/addBidToListing.mjs";
 import placeholderImg from "../../../../images/no_img.jpg";
 
 // Extracting the post ID from the URL query string
@@ -13,7 +15,7 @@ const id = params.get("id");
 
 export const fetchSingleListing = async (id) => {
   return await fetchWithToken(
-    `${apiBaseUrl}${allListingsUrl}/${id}?_bids=true`,
+    `${apiBaseUrl}${allListingsUrl}/${id}?_bids=true&_seller=true`,
     getData,
   );
 };
@@ -28,8 +30,9 @@ const listingHighestBid = document.querySelector("#listing-hightest-bid");
 const listingEndsIn = document.querySelector("#listing-endsIn");
 const usersCurrentCredit = document.querySelector("#users-current-credit");
 const accessToken = localStorage.getItem("accessToken");
-const userCreditContainer = document.querySelector("#user-credit");
+export const userCreditContainer = document.querySelector("#user-credit");
 const accordionCollapseBody = document.querySelector("#accordion-collapse");
+const userInfoContainer = document.querySelector("#user-info-text");
 
 export const displaySingleListingsData = async () => {
   try {
@@ -82,6 +85,23 @@ export const displaySingleListingsData = async () => {
       listingDescription.innerText = data.description;
     } else {
       listingDescription.innerText = "";
+    }
+
+    await fetchUserProfile();
+
+    const listingsData = await fetchSingleListing(id);
+    const sellerName = listingsData.seller.name;
+
+    if (user.name === sellerName) {
+      addBidToListingForm.style.display = "none";
+
+      userCreditContainer.style.display = "none";
+
+      const userInfotext = document.createElement("p");
+      userInfotext.className =
+        "text-green-primary my-2 pt-4 text-center sm:text-left text-2xl";
+      userInfotext.innerHTML = "Thank you for adding this item up for auction!";
+      userInfoContainer.appendChild(userInfotext);
     }
 
     const bids = sortByAmountDesc(data.bids);
@@ -143,7 +163,6 @@ export const displayBidHistory = async () => {
   }
 };
 
-const user = JSON.parse(localStorage.getItem("userProfile"));
 const fetchUserData = async () => {
   return await fetchWithToken(`${apiBaseUrl}${profileUrl}${user.name}?`);
 };
