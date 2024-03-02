@@ -10,7 +10,7 @@ export function createCountdownTimer(endDateString, countdownElement) {
 
     if (timeDifference <= 0) {
       clearInterval(calculateRemainingTime);
-      countdownElement.innerText = "Bid expired";
+      countdownElement.innerText = "Auction ended";
       addBidToListingForm.style.display = "none";
       userCreditContainer.style.display = "none";
     } else {
