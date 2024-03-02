@@ -5,9 +5,6 @@ export const handleBidError = (status) => {
   if (status === 400) {
     // Show alert for bid amount requirement
     showAlert("Bid amount must be higher than highest bid");
-  } else if (status === 403) {
-    // Show alert for bid amount requirement
-    showAlert("You can not make a bid on your own listing");
   } else {
     // Throw an error for other HTTP statuses
     throw new Error(`HTTP error! Status: ${status}`);
