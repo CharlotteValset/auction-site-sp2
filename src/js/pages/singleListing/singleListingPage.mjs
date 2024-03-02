@@ -87,23 +87,6 @@ export const displaySingleListingsData = async () => {
       listingDescription.innerText = "";
     }
 
-    await fetchUserProfile();
-
-    const listingsData = await fetchSingleListing(id);
-    const sellerName = listingsData.seller.name;
-
-    if (user.name === sellerName) {
-      addBidToListingForm.style.display = "none";
-
-      userCreditContainer.style.display = "none";
-
-      const userInfotext = document.createElement("p");
-      userInfotext.className =
-        "text-green-primary my-2 pt-4 text-center sm:text-left text-2xl";
-      userInfotext.innerHTML = "Thank you for adding this item up for auction!";
-      userInfoContainer.appendChild(userInfotext);
-    }
-
     const bids = sortByAmountDesc(data.bids);
     listingHighestBid.innerText =
       bids.length > 0 ? `$ ${bids[0].amount}` : "No bids yet";
@@ -112,6 +95,33 @@ export const displaySingleListingsData = async () => {
   } catch (error) {
     // Throw an error
     throw new Error(error);
+  }
+};
+
+export const removeCreditAndAddBidIfUserIsSeller = async () => {
+  try {
+    // Attempt to fetch user profile from localStorage
+    const userProfile = JSON.parse(localStorage.getItem("userProfile"));
+
+    if (!userProfile || !userProfile.name) {
+      return;
+    }
+
+    const listingsData = await fetchSingleListing(id);
+    const sellerName = listingsData.seller.name;
+
+    if (userProfile.name === sellerName) {
+      addBidToListingForm.style.display = "none";
+      userCreditContainer.style.display = "none";
+
+      const userInfotext = document.createElement("p");
+      userInfotext.className =
+        "text-green-primary my-2 pt-4 text-center sm:text-left text-2xl";
+      userInfotext.innerHTML = "Thank you for adding this item up for auction!";
+      userInfoContainer.appendChild(userInfotext);
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
   }
 };
 
