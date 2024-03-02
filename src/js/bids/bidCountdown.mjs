@@ -1,3 +1,6 @@
+import { userCreditContainer } from "../pages/singleListing/singleListingPage.mjs";
+import { addBidToListingForm } from "../bids/addBidToListing.mjs";
+
 export function createCountdownTimer(endDateString, countdownElement) {
   const endDate = new Date(endDateString).getTime();
 
@@ -8,6 +11,8 @@ export function createCountdownTimer(endDateString, countdownElement) {
     if (timeDifference <= 0) {
       clearInterval(calculateRemainingTime);
       countdownElement.innerText = "Bid expired";
+      addBidToListingForm.style.display = "none";
+      userCreditContainer.style.display = "none";
     } else {
       const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
       const hours = Math.floor(

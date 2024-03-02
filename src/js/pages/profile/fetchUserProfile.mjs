@@ -2,7 +2,7 @@ import { apiBaseUrl, profileUrl } from "../../variables.mjs";
 import { fetchWithToken } from "../../auth/accesstoken.mjs";
 
 // Retrieve user profile information from localStorage
-const user = JSON.parse(localStorage.getItem("userProfile"));
+export const user = JSON.parse(localStorage.getItem("userProfile"));
 
 /**
  * Fetches the user profile data with an access token.
