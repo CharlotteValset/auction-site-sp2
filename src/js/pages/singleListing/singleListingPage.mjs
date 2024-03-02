@@ -1,5 +1,5 @@
 import { apiBaseUrl, allListingsUrl, profileUrl } from "../../variables.mjs";
-import { fetchUserProfile, user } from "../profile/fetchUserProfile.mjs";
+import { user } from "../profile/fetchUserProfile.mjs";
 import { fetchWithToken, getData } from "../../auth/accesstoken.mjs";
 import { sortByAmountDesc } from "../../utils/sortByAmountDesc.mjs";
 import { createCountdownTimer } from "../../bids/bidCountdown.mjs";
@@ -91,7 +91,7 @@ export const displaySingleListingsData = async () => {
     listingHighestBid.innerText =
       bids.length > 0 ? `$ ${bids[0].amount}` : "No bids yet";
 
-    createCountdownTimer(data.endsAt, listingEndsIn);
+    createCountdownTimer(data.endsAt, listingEndsIn, true);
   } catch (error) {
     // Throw an error
     throw new Error(error);

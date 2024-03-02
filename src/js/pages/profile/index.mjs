@@ -9,12 +9,12 @@ import {
 import { editAvatar } from "./editUserAvatar.mjs";
 
 displayUserData();
-displayUserListings();
 displayUserWins();
-
-logOutButton.addEventListener("click", logout);
+displayUserListings();
 
 createListingForm.addEventListener("submit", createListing);
 
 const editAvatarForm = document.querySelector("#profile-image-form");
 editAvatarForm.addEventListener("submit", editAvatar);
+
+logOutButton.addEventListener("click", logout);
