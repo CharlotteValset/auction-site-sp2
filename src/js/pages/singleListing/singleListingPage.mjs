@@ -40,6 +40,8 @@ export const displaySingleListingsData = async () => {
     const data = await fetchSingleListing(id);
     console.log("Listing-data:", data);
 
+    document.title = `BidOnIt | ${data.title}`;
+
     if (
       Array.isArray(data.media) &&
       data.media.length > 0 &&
