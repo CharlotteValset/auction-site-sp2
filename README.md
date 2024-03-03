@@ -4,7 +4,9 @@
 
 I am a front-end developer student at Noroff and a UX designer, please check out my Semester Project 2 assignment, an auction website - [BidOnIt](https://bidonit.netlify.app)
 
-## Description
+BidOnIt serves as an online auction marketplace, allowing users to list items for bidding and participate in auctions hosted by other users. Upon registration, users are granted with an initial credit balance of 1000, which can be used for placing bids or earned more through the sale of items. Access to bidding functionality is exclusive to registered users, while non-registered individuals can browse the available listings.
+
+## The Process
 
 I designed the user interface and wireframes using Figma, and subsequently developed a fully responsive website using Vite and Tailwind CSS. The website's functionality was implemented using vanilla JavaScript for a streamlined and efficient user experience.
 
