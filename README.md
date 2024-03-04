@@ -1,8 +1,9 @@
 # Charlotte Valset - Semester Project 2
 
+<div class="flex flex-row">
 <img src="./images/homepageScreenshot.jpg" alt="Homepage Screenshot" width="400"/>
 <img src="./images/listingScreenshot.jpg" alt="Listing Screenshot" width="400"/>
-
+</div>
 I am a front-end developer student at Noroff and a UX designer, please check out my Semester Project 2 assignment, an auction website - [BidOnIt](https://bidonit.netlify.app)
 
 BidOnIt serves as an online auction marketplace, allowing users to list items for bidding and participate in auctions hosted by other users. Upon registration, users are granted with an initial credit balance of 1000, which can be used for placing bids or earned more through the sale of items. Access to bidding functionality is exclusive to registered users, while non-registered individuals can browse the available listings.
