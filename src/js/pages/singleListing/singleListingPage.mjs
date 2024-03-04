@@ -6,6 +6,7 @@ import { createCountdownTimer } from "../../bids/bidCountdown.mjs";
 import { formatDateString } from "../../utils/formatDate.mjs";
 import { formatTimeString } from "../../utils/formatTime.mjs";
 import { addBidToListingForm } from "../../bids/addBidToListing.mjs";
+import { handleImageError } from "../../errorHandling/handleImageError.mjs";
 import placeholderImg from "../../../../images/no_img.jpg";
 
 // Extracting the post ID from the URL query string
@@ -42,44 +43,37 @@ export const displaySingleListingsData = async () => {
 
     document.title = `${data.title} | BidOnIt`;
 
-    if (
-      Array.isArray(data.media) &&
-      data.media.length > 0 &&
-      data.media[0] !== "null"
-    ) {
-      // If the conditions are met, set the image source to the first element of data.media
-      listingImage1.src = data.media[0];
-
-      // Check if the second element exists before setting the source for listingImage2
-      if (data.media.length > 1 && data.media[1] !== "null") {
-        listingImage2.src = data.media[1];
-      } else {
-        // If the second element doesn't exist or is "null", use the placeholder image
-        listingImage2.src = `${placeholderImg}`;
-      }
-
-      // Check if the third element exists before setting the source for listingImage3
-      if (data.media.length > 2 && data.media[2] !== "null") {
-        listingImage3.src = data.media[2];
-      } else {
-        // If the third element doesn't exist or is "null", use the placeholder image
-        listingImage3.src = `${placeholderImg}`;
-      }
-    } else {
-      // If data.media is not an array, is empty, or the first element is "null", use the placeholder image for all images
-      listingImage1.src = `${placeholderImg}`;
-      listingImage2.src = `${placeholderImg}`;
-      listingImage3.src = `${placeholderImg}`;
-    }
-
-    function handleImageError(image) {
-      image.onerror = function () {
-        image.src = placeholderImg;
-      };
-    }
+    // Extract the first three images from the listing data
+    const [image1, image2, image3] = data.media.slice(0, 3);
 
     const imageElements = [listingImage1, listingImage2, listingImage3];
-    imageElements.forEach(handleImageError);
+
+    for (let i = 0; i < imageElements.length; i++) {
+      const imageElement = imageElements[i];
+
+      if (i === 0 && image1 && image1 !== "null") {
+        imageElement.src = image1;
+      } else if (i === 1 && image2 && image2 !== "null") {
+        imageElement.src = image2;
+      } else if (i === 2 && image3 && image3 !== "null") {
+        imageElement.src = image3;
+      } else {
+        imageElement.src = placeholderImg;
+      }
+
+      handleImageError(imageElement);
+    }
+
+    const nextButton = document.getElementById("nextButton");
+    const prevButton = document.getElementById("prevButton");
+    const indicators = document.getElementById("indicators");
+
+    if (data.media.length <= 1) {
+      // Disable the navigation controls and indicators
+      nextButton.style.display = "none";
+      prevButton.style.display = "none";
+      indicators.style.display = "none";
+    }
 
     listingTitle.innerText = data.title;
 
