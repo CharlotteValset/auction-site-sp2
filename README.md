@@ -1,6 +1,7 @@
 # Charlotte Valset - Semester Project 2
 
-![image](/images/bidonitScreenshot.jpg)
+<img src="./images/homepageScreenshot.jpg" alt="Homepage Screenshot" width="400"/>
+<img src="./images/listingScreenshot.jpg" alt="Listing Screenshot" width="400"/>
 
 I am a front-end developer student at Noroff and a UX designer, please check out my Semester Project 2 assignment, an auction website - [BidOnIt](https://bidonit.netlify.app)
 
