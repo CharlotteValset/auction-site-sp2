@@ -22,5 +22,5 @@ export const successMessage = () => {
   // Remove the success message after 5 seconds
   setTimeout(() => {
     successMessage.remove();
-  }, 5000);
+  }, 3000);
 };
