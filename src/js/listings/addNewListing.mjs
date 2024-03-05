@@ -22,9 +22,7 @@ export const createListing = async (event) => {
   const description = event.target.querySelector(
     "#new-listing-description",
   ).value;
-  const imageUrl1 = event.target.querySelector("#new-listing-image1").value;
-  const imageUrl2 = event.target.querySelector("#new-listing-image2").value;
-  const imageUrl3 = event.target.querySelector("#new-listing-image3").value;
+  const mediaInput = event.target.querySelectorAll(".addImage");
   const bidDeadlineDate =
     event.target.querySelector("#bid-deadline-date").value;
 
@@ -35,7 +33,6 @@ export const createListing = async (event) => {
     return;
   }
 
-  const mediaInput = event.target.querySelectorAll(".addImage");
   const media = [];
 
   mediaInput.forEach(function (input) {
@@ -61,21 +58,19 @@ export const createListing = async (event) => {
       },
       body: JSON.stringify(newListing),
     });
+
     console.log(response);
+
     // Check if the request was successful
-    if (response.errors) {
-      // Throw an error if the request was not successful
-      throw new Error(`HTTP error! Status: ${response.status}`);
+    if (response.ok) {
+      event.target.reset();
+      window.location.href = "/index.html";
+      // If response status is 400, display alert message
+    } else if (response.status === 400) {
+      showAlert("Something went wrong, please try again!");
     }
-    // Reset the form after successful post creation
-    event.target.reset();
-
-    window.location.href = "/index.html";
   } catch (error) {
-    // Log the detailed error message
-    console.error("Error creating post:", error.message);
-
-    // Rethrow the error if needed
-    throw error;
+    // Throw an error with a detailed message if an error occurs
+    throw new Error("Error creating listing:", error);
   }
 };
