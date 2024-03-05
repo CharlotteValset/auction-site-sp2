@@ -68,3 +68,11 @@ textarea {
   text-align: center;
   margin: 20px auto;
 }
+
+.alert-message,
+.success-message,
+.alert-error-message,
+.alert-Bid-message,
+.alert-Bid-Error-message {
+  display: none;
+}

@@ -49,12 +49,13 @@ const loginUser = async (url, data) => {
       // Returning the parsed JSON data
       return json;
     } else {
-      // Alert for unsuccessful login
-      alert("Invalid email or password");
+      // Alert message for unsuccessful login
+      const alertMessage = document.querySelector(".alert-message");
+      alertMessage.style.display = "block";
     }
   } catch (error) {
     // Handling errors that may occur during the fetch operation
-    throw new Error(error, "An error occurred!");
+    throw new Error(`An error occurred: ${error.message}`);
   }
 };
 
