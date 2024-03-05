@@ -2,6 +2,10 @@ import { fetchWithToken } from "../auth/accesstoken.mjs";
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
 import { listingsCard } from "../components/listingCard.mjs";
 import { sortByEndDate } from "../utils/sortByEndDate.mjs";
+import {
+  listingsContainer,
+  errorMessage,
+} from "../listings/displayListings.mjs";
 // Array to store fetched listings
 let listingsArray = [];
 
@@ -96,6 +100,7 @@ export const initialize = async () => {
     // Render the fetched listings
     renderListings(listingsArray);
   } catch (error) {
+    listingsContainer.innerHTML = errorMessage;
     throw new Error("Error fetching listings:", error); // Re-throw the error if needed
   }
 };
