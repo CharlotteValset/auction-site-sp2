@@ -1,11 +1,14 @@
 // Imports
-import { handleBidError } from "./handleBidError.mjs";
+import {
+  handleBidError,
+  alertBidErrorMessage,
+} from "../errorHandling/handleBidError.mjs";
 import { handleSuccessfulBid } from "./handleSuccessfulBid.mjs";
-import { showAlert } from "../utils/showAlert.mjs";
 import { makeBid } from "./makeBid.mjs";
 
 // Selecting the form element
 export const addBidToListingForm = document.querySelector("#addBid");
+const alertBidMessage = document.querySelector(".alert-Bid-message");
 
 // Event handler for form submission
 export const addBidToListing = async (event) => {
@@ -22,7 +25,7 @@ export const addBidToListing = async (event) => {
   // Check if the bid amount is provided
   if (!amountNum) {
     // Display an alert if the required field is not filled
-    showAlert("Please add an amount to the input field");
+    alertBidMessage.style.display = "block";
     return;
   }
 
@@ -34,6 +37,8 @@ export const addBidToListing = async (event) => {
     if (response.ok) {
       // Handle successful bid
       handleSuccessfulBid();
+      alertBidMessage.style.display = "none";
+      alertBidErrorMessage.style.display = "none";
     } else {
       // Handle bid errors based on status
       handleBidError(response.status);

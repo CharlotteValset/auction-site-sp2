@@ -233,6 +233,30 @@
                     required
                   />
                 </div>
+                <div
+                  class="alert-message mt-4 text-center text-sm text-red-800"
+                  role="alert"
+                >
+                  <span class="font-medium"
+                    >Please fill in all required fields</span
+                  >
+                </div>
+                <div
+                  class="success-message p-4 mt-4 mx-auto text-center text-sm text-green-800 rounded-lg bg-green-200 w-74"
+                  role="alert"
+                >
+                  <span class="font-medium text-green-900"
+                    >Listing successfully added!
+                  </span>
+                </div>
+                <div
+                  class="alert-error-message mt-4 text-center text-sm text-red-800"
+                  role="alert"
+                >
+                  <span class="font-medium">
+                    Something went wrong, please try again!
+                  </span>
+                </div>
                 <div class="flex justify-center mx-auto my-6">
                   <button type="submit" class="primary-button">
                     Add Listing
@@ -487,6 +511,22 @@
                         class="block py-2.5 ps-8 pe-2 w-44 h-12 z-20 text-base text-darkest-grey bg-gray-50 rounded-full border border-medium-grey"
                         placeholder="$"
                       />
+                      <div
+                        class="alert-Bid-message mt-4 text-center text-sm text-red-800"
+                        role="alert"
+                      >
+                        <span class="font-medium"
+                          >Please add amount to input field</span
+                        >
+                      </div>
+                      <div
+                        class="alert-Bid-Error-message mt-4 text-center text-sm text-red-800 w-44"
+                        role="alert"
+                      >
+                        <span class="font-medium">
+                          *Bid amount must be higher than the latest bid
+                        </span>
+                      </div>
                       <button
                         type="submit"
                         class="absolute top-0 end-0 px-3 h-12 text-xl font-light text-light-grey bg-green-primary rounded-e-full hover:bg-green-primary-hover"

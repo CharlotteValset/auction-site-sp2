@@ -4,9 +4,9 @@ import { listingsCard } from "../components/listingCard.mjs";
 import { sortByEndDate } from "../utils/sortByEndDate.mjs";
 
 // Targeting DOM elements
-const loaderContainer = document.querySelector(".loader-container");
-const listingsContainer = document.querySelector("#listings-container");
-const errorMessage = createMessage("error");
+export const loaderContainer = document.querySelector(".loader-container");
+export const listingsContainer = document.querySelector("#listings-container");
+export const errorMessage = createMessage("error");
 
 // Flag to prevent multiple simultaneous loading requests
 let loadingListings = false;

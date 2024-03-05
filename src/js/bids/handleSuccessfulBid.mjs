@@ -12,5 +12,5 @@ export const handleSuccessfulBid = () => {
   // Wait for 5 seconds before reloading the window
   setTimeout(() => {
     window.location.reload();
-  }, 5000);
+  }, 3000);
 };

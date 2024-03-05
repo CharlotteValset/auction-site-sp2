@@ -1,6 +1,5 @@
 //Imports
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
-import { showAlert } from "../utils/showAlert.mjs";
 
 // Get the form element for creating a new post
 export const createListingForm = document.querySelector("#new-listing");
@@ -27,9 +26,10 @@ export const createListing = async (event) => {
     event.target.querySelector("#bid-deadline-date").value;
 
   // Check if required fields are filled
-  if (!title || !description || !bidDeadlineDate) {
+  if (!title || !mediaInput || !bidDeadlineDate) {
     // Display an alert if required fields are not filled
-    showAlert("Please fill in all required fields");
+    const alertMessage = document.querySelector(".alert-message");
+    alertMessage.style.display = "block";
     return;
   }
 
@@ -64,10 +64,19 @@ export const createListing = async (event) => {
     // Check if the request was successful
     if (response.ok) {
       event.target.reset();
-      window.location.href = "/index.html";
+
+      const alertSuccessMessage = document.querySelector(".success-message");
+      alertSuccessMessage.style.display = "block";
+
+      // Redirect to the homepage
+      setTimeout(() => {
+        window.location.href = "/index.html";
+      }, 2000);
+
       // If response status is 400, display alert message
     } else if (response.status === 400) {
-      showAlert("Something went wrong, please try again!");
+      const alertErrorMessage = document.querySelector(".alert-error-message");
+      alertErrorMessage.style.display = "block";
     }
   } catch (error) {
     // Throw an error with a detailed message if an error occurs
