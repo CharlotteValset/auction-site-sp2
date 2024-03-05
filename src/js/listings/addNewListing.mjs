@@ -1,6 +1,5 @@
 //Imports
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
-import { showAlert } from "../utils/showAlert.mjs";
 
 // Get the form element for creating a new post
 export const createListingForm = document.querySelector("#new-listing");
