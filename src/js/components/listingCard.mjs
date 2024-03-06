@@ -13,6 +13,7 @@ export const listingsCard = (data) => {
 
   const cardImage = document.createElement("img");
   cardImage.className = "rounded-t-lg w-72 h-64 sm:w-96 md:w-72 object-cover";
+  cardImage.setAttribute("alt", `${data.title}`);
   const imageArray = data.media;
 
   if (
