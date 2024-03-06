@@ -70,8 +70,7 @@ export const listingsCard = (data) => {
   bidExpiresWrapper.appendChild(bidExpiresLabel);
 
   const bidExpiresCountdown = document.createElement("span");
-  bidExpiresCountdown.id = "bidExpiresCountdown";
-  bidExpiresCountdown.className = "";
+  bidExpiresCountdown.className = "bidExpiresCountdown";
   createCountdownTimer(data.endsAt, bidExpiresCountdown);
   bidExpiresWrapper.appendChild(bidExpiresCountdown);
 
