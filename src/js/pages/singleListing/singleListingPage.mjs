@@ -53,12 +53,16 @@ export const displaySingleListingsData = async () => {
 
       if (i === 0 && image1 && image1 !== "null") {
         imageElement.src = image1;
+        imageElement.alt = data.title;
       } else if (i === 1 && image2 && image2 !== "null") {
         imageElement.src = image2;
+        imageElement.alt = data.title;
       } else if (i === 2 && image3 && image3 !== "null") {
         imageElement.src = image3;
+        imageElement.alt = data.title;
       } else {
         imageElement.src = placeholderImg;
+        imageElement.alt = "Placeholder Image";
       }
 
       handleImageError(imageElement);

@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
@@ -163,7 +164,7 @@
                 <label class="form-control w-56 sm:w-72 mx-auto">
                   <div class="label ps-2">
                     <span class="label-text text-lg font-extralight"
-                      >Title</span
+                      >Title*</span
                     >
                   </div>
                   <input
@@ -188,10 +189,13 @@
                     class="textarea-height w-56 sm:w-72 rounded-3xl mb-4"
                   ></textarea>
                 </label>
-                <label class="form-control w-56 sm:w-72 mx-auto">
+                <label
+                  class="form-control w-56 sm:w-72 mx-auto"
+                  for="new-listing-image1"
+                >
                   <div class="label ps-2">
                     <span class="label-text text-lg font-extralight"
-                      >Add image url</span
+                      >Add image url*</span
                     >
                   </div>
                   <input
@@ -201,12 +205,28 @@
                     class="addImage input input-bordered w-56 sm:w-72 max-w-xs mb-4 rounded-full"
                     required
                   />
+                </label>
+                <label
+                  class="form-control w-56 sm:w-72 mx-auto"
+                  for="new-listing-image2"
+                >
+                  <div class="sr-only">
+                    <span>Add image url 2</span>
+                  </div>
                   <input
                     id="new-listing-image2"
                     type="text"
                     placeholder=""
                     class="addImage input input-bordered w-56 sm:w-72 max-w-xs mb-4 rounded-full"
                   />
+                </label>
+                <label
+                  class="form-control w-56 sm:w-72 mx-auto"
+                  for="new-listing-image3"
+                >
+                  <div class="sr-only">
+                    <span>Add image url 3</span>
+                  </div>
                   <input
                     id="new-listing-image3"
                     type="text"
@@ -221,7 +241,7 @@
                     <label
                       for="bid-deadline-date"
                       class="w-full label-text text-lg font-extralight"
-                      >Bids ends by</label
+                      >Bids ends by*</label
                     >
                   </div>
                   <input
@@ -290,6 +310,7 @@
       <form id="search-form">
         <div class="flex justify-center mt-3">
           <div class="relative">
+            <label for="search-input" class="sr-only">Search</label>
             <input
               type="search"
               id="search-input"
@@ -320,6 +341,7 @@
           </div>
         </div>
       </form>
+
       <section class="my-10 w-10/12 max-w-screen-2xl mx-auto">
         <div class="loader-container">
           <div class="content-loader"></div>
@@ -332,8 +354,8 @@
         ></div>
       </section>
     </main>
-    <footer class="bg-light-grey">
-      <div class="mx-auto w-full max-w-screen-xl">
+    <footer class="bg-light-grey h-20">
+      <div class="mx-auto max-w-screen-xl">
         <div
           class="px-4 py-6 bg-light-grey dark:bg-gray-700 flex items-center justify-between"
         >

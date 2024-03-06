@@ -10,7 +10,7 @@ import {
 let listingsArray = [];
 
 // URL to the fetch API
-const API_URL = `${apiBaseUrl}${allListingsUrl}?_bids=true&_active=true&sort=created`;
+const API_URL = `${apiBaseUrl}${allListingsUrl}?_bids=true&_active=true&sort=created&limit=25`;
 
 /**
  * Renders all the listings in the selected container.
