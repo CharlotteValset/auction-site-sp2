@@ -12,10 +12,6 @@ export const listingsCard = (data) => {
   cardHref.href = `../../../listing/index.html?id=${data.id}`;
   card.appendChild(cardHref);
 
-  const imageWrapper = document.createElement("div");
-  imageWrapper.className = "flex aspect-[16/10] items-center overflow-hidden";
-  cardHref.appendChild(imageWrapper);
-
   const cardImage = document.createElement("img");
   cardImage.className = "h-64 w-full rounded-t-lg object-cover";
   cardImage.setAttribute("alt", `${data.title}`);
@@ -36,7 +32,7 @@ export const listingsCard = (data) => {
     cardImage.src = `${placeholderImg}`;
   };
 
-  imageWrapper.appendChild(cardImage);
+  cardHref.appendChild(cardImage);
 
   const cardTextWrapper = document.createElement("div");
   cardTextWrapper.className = "p-5";
