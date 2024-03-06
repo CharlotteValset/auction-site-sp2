@@ -1,6 +1,7 @@
 import placeholderImg from "../../../images/no_img.jpg";
 import { createCountdownTimer } from "../bids/bidCountdown.mjs";
 import { sortByAmountDesc } from "../utils/sortByAmountDesc.mjs";
+import { updateImageUrlFromDomains } from "../utils/updateImageUrls.mjs";
 
 export const listingsCard = (data) => {
   const card = document.createElement("div");
@@ -19,14 +20,14 @@ export const listingsCard = (data) => {
   cardImage.className = "h-64 w-full rounded-t-lg object-cover";
   cardImage.setAttribute("alt", `${data.title}`);
   cardImage.loading = "lazy";
-  const imageArray = data.media;
 
+  const imageArray = data.media;
   if (
     Array.isArray(imageArray) &&
     imageArray.length > 0 &&
     imageArray[0] !== "null"
   ) {
-    cardImage.src = imageArray[0];
+    cardImage.src = updateImageUrlFromDomains(imageArray[0]);
   } else {
     cardImage.src = `${placeholderImg}`;
   }

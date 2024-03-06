@@ -7,6 +7,6 @@ import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
  */
 export const fetchAllListings = async () => {
   return await fetchWithToken(
-    `${apiBaseUrl}${allListingsUrl}?_bids=true&_active=true&sort=created&_seller=true&limit=25`,
+    `${apiBaseUrl}${allListingsUrl}?_bids=true&_active=true&sort=created&_seller=true&limit=50`,
   );
 };
