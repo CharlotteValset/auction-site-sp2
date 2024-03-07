@@ -7,7 +7,11 @@
  * @returns {string} - Updated URL with new width and height
  */
 export function updateImageUrlFromDomains(url, newWidth, newHeight) {
-  const allowedDomains = ["images.pexels.com", "images.unsplash.com"];
+  const allowedDomains = [
+    "images.pexels.com",
+    "images.unsplash.com",
+    "plus.unsplash.com",
+  ];
   const NEW_WIDTH = newWidth ?? 300;
   const NEW_HEIGHT = newHeight ?? 180;
 
@@ -16,7 +20,6 @@ export function updateImageUrlFromDomains(url, newWidth, newHeight) {
     const domainMatched = allowedDomains.some((domain) =>
       urlObj.hostname.includes(domain),
     );
-
     if (domainMatched) {
       urlObj.searchParams.set("w", NEW_WIDTH);
       urlObj.searchParams.set("h", NEW_HEIGHT);

@@ -14,14 +14,13 @@
       href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../src/css/style.css" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <script type="module" src="../src/js/main.js"></script>
     <script
       type="module"
       src="../src/js/pages/singleListing/index.mjs"
     ></script>
-    <link rel="stylesheet" href="../src/css/style.css" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-
     <title>Listing | BidOnIt</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
   </head>
@@ -93,12 +92,13 @@
                 >
               </li>
               <li class="isLoggedIn">
-                <a
+                <button
                   data-modal-target="new-listing-modal"
                   data-modal-toggle="new-listing-modal"
-                  class="cursor-pointer block py-2 px-3 text-green-primary rounded hover:underline font-kodchasan"
-                  >Add listing</a
+                  class="cursor-pointer block py-2 px-3 mx-auto text-green-primary rounded hover:underline font-kodchasan"
                 >
+                  Add listing
+                </button>
               </li>
               <li class="isLoggedIn">
                 <a
