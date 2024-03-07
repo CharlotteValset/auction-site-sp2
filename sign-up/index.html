@@ -14,8 +14,8 @@
       href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script type="module" src="../src/js/auth/register.mjs" defer></script>
-    <script type="module" src="../src/js/main.js" defer></script>
+    <script type="module" src="../src/js/auth/register.mjs"></script>
+    <script type="module" src="../src/js/main.js"></script>
     <link rel="stylesheet" href="../src/css/style.css" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <title>Sign Up | BidOnIt</title>
@@ -106,9 +106,9 @@
       </div>
       <form id="register-form" class="flex flex-col" action="get">
         <label class="form-control w-56 sm:w-72 max-w-xs mx-auto">
-          <div class="label ps-2">
-            <span class="label-text text-lg font-extralight">Username</span>
-          </div>
+          <span class="label ps-2 label-text text-lg font-extralight"
+            >Username</span
+          >
           <input
             type="text"
             placeholder=""
@@ -120,9 +120,9 @@
           />
         </label>
         <label class="form-control w-56 sm:w-72 max-w-xs mx-auto">
-          <div class="label ps-2">
-            <span class="label-text text-lg font-extralight">Email</span>
-          </div>
+          <span class="label ps-2 label-text text-lg font-extralight"
+            >Email</span
+          >
           <input
             type="email"
             placeholder=""
@@ -133,9 +133,10 @@
           />
         </label>
         <label class="form-control w-56 sm:w-72 max-w-xs mx-auto">
-          <div class="label ps-2">
-            <span class="label-text text-lg font-extralight">Password</span>
-          </div>
+          <span class="label ps-2 label-text text-lg font-extralight"
+            >Password</span
+          >
+
           <input
             type="password"
             placeholder=""
@@ -146,14 +147,11 @@
           />
         </label>
         <label class="form-control w-56 sm:w-72 max-w-xs mx-auto">
-          <div class="label ps-2">
-            <span class="label-text text-lg font-extralight"
-              >Profile Image Url</span
-            >
-          </div>
+          <span class="label ps-2 label-text text-lg font-extralight"
+            >Profile Image Url</span
+          >
           <input
             type="url"
-            alt="avatar image"
             placeholder=""
             class="input input-bordered w-56 sm:w-72 max-w-xs mb-6 rounded-full"
           />

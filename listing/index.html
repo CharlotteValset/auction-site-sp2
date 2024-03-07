@@ -14,11 +14,10 @@
       href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script type="module" src="../src/js/main.js" defer></script>
+    <script type="module" src="../src/js/main.js"></script>
     <script
       type="module"
       src="../src/js/pages/singleListing/index.mjs"
-      defer
     ></script>
     <link rel="stylesheet" href="../src/css/style.css" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
@@ -166,11 +165,9 @@
               </h3>
               <form id="new-listing" class="flex flex-col justify-center">
                 <label class="form-control w-56 sm:w-72 mx-auto">
-                  <div class="label ps-2">
-                    <span class="label-text text-lg font-extralight"
-                      >Title</span
-                    >
-                  </div>
+                  <span class="label ps-2 label-text text-lg font-extralight"
+                    >Title*</span
+                  >
                   <input
                     id="new-listing-Title"
                     type="text"
@@ -182,13 +179,10 @@
                   />
                 </label>
                 <label class="form-control w-56 sm:w-72 mx-auto">
-                  <div class="label ps-2">
-                    <span class="label-text text-lg font-extralight"
-                      >Description</span
-                    >
-                  </div>
+                  <span class="label ps-2 label-text text-lg font-extralight"
+                    >Description</span
+                  >
                   <textarea
-                    type="text"
                     id="new-listing-description"
                     class="textarea-height w-56 sm:w-72 rounded-3xl mb-4"
                   ></textarea>
@@ -197,11 +191,9 @@
                   class="form-control w-56 sm:w-72 mx-auto"
                   for="new-listing-image1"
                 >
-                  <div class="label ps-2">
-                    <span class="label-text text-lg font-extralight"
-                      >Add image url*</span
-                    >
-                  </div>
+                  <span class="label ps-2 label-text text-lg font-extralight"
+                    >Add image url*</span
+                  >
                   <input
                     id="new-listing-image1"
                     type="text"
@@ -214,9 +206,7 @@
                   class="form-control w-56 sm:w-72 mx-auto"
                   for="new-listing-image2"
                 >
-                  <div class="sr-only">
-                    <span>Add image url 2</span>
-                  </div>
+                  <span class="sr-only">Add image url 2</span>
                   <input
                     id="new-listing-image2"
                     type="text"
@@ -228,9 +218,7 @@
                   class="form-control w-56 sm:w-72 mx-auto"
                   for="new-listing-image3"
                 >
-                  <div class="sr-only">
-                    <span>Add image url 3</span>
-                  </div>
+                  <span class="sr-only">Add image url 3</span>
                   <input
                     id="new-listing-image3"
                     type="text"
@@ -241,13 +229,11 @@
                 <div
                   class="w-56 sm:w-72 mx-auto transform text-lg duration-300"
                 >
-                  <div class="label ps-2">
-                    <label
-                      for="bid-deadline-date"
-                      class="w-full label-text text-lg font-extralight"
-                      >Bids ends by</label
-                    >
-                  </div>
+                  <label
+                    for="bid-deadline-date"
+                    class="label ps-2 w-full label-text text-lg font-extralight"
+                    >Bids ends by*</label
+                  >
                   <input
                     name="date"
                     type="datetime-local"
@@ -491,7 +477,7 @@
                 ></div>
               </div>
             </div>
-            <section class="flex flex-col">
+            <div class="flex flex-col">
               <div id="user-info-text"></div>
               <div
                 id="userNotLoggedIn"
@@ -561,7 +547,7 @@
                   </div>
                 </form>
               </div>
-            </section>
+            </div>
           </div>
         </div>
       </section>
