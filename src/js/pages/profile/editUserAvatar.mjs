@@ -5,6 +5,7 @@ export const editAvatar = async (event) => {
   // Prevent the form from submitting normally
   event.preventDefault();
 
+  const alertErrorMessage = document.querySelector(".alert-error-message");
   const userProfileString = localStorage.getItem("userProfile");
   const userProfileObject = JSON.parse(userProfileString);
   const userName = userProfileObject.name;
@@ -38,7 +39,7 @@ export const editAvatar = async (event) => {
     // Check if the response indicates a successful update
     if (response.errors) {
       // Display an error message if the update was not successful
-      alert("Failed to update the image. Please try again.");
+      alertErrorMessage.style.display = "block";
     } else {
       // Redirect to the user's profile page after successful update
       window.location.href = "/profile/";
@@ -48,9 +49,3 @@ export const editAvatar = async (event) => {
     throw new Error("Error updating image:", error);
   }
 };
-
-/* // Event listener for form submission
-document.addEventListener("DOMContentLoaded", () => {
-  const editAvatarForm = document.querySelector("#profile-image-form");
-  editAvatarForm.addEventListener("submit", editAvatar);
-}); */

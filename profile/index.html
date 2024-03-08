@@ -175,17 +175,25 @@
                     >
                       <label class="form-control w-56 sm:w-72 mx-auto">
                         <span
-                          class="label ps-2label-text text-base sm:text-lg font-extralight"
+                          class="label ps-2 label-text text-base sm:text-lg font-extralight"
                           >Profile Image Url</span
                         >
                         <input
                           id="profile-image-url"
-                          type="text"
+                          type="url"
                           placeholder=""
-                          class="input input-bordered w-56 sm:w-72 mb-8 rounded-full"
+                          class="input input-bordered w-56 sm:w-72 mb-4 rounded-full"
                         />
                       </label>
-                      <div class="flex justify-center mx-auto mb-8">
+                      <div
+                        class="alert-error-message mt-0 mb-4 text-center text-sm text-red-800"
+                        role="alert"
+                      >
+                        <span class="font-medium">
+                          Something went wrong, please try again!
+                        </span>
+                      </div>
+                      <div class="flex justify-center mx-auto mt-4 mb-8">
                         <button
                           id="update-image-button"
                           class="primary-button"
@@ -293,7 +301,7 @@
                       >
                       <input
                         id="new-listing-image1"
-                        type="text"
+                        type="url"
                         placeholder=""
                         class="addImage input input-bordered w-56 sm:w-72 max-w-xs mb-4 rounded-full"
                         required
@@ -306,7 +314,7 @@
                       <span class="sr-only">Add image url 2</span>
                       <input
                         id="new-listing-image2"
-                        type="text"
+                        type="url"
                         placeholder=""
                         class="addImage input input-bordered w-56 sm:w-72 max-w-xs mb-4 rounded-full"
                       />
@@ -318,7 +326,7 @@
                       <span class="sr-only">Add image url 3</span>
                       <input
                         id="new-listing-image3"
-                        type="text"
+                        type="url"
                         placeholder=""
                         class="addImage input input-bordered w-56 sm:w-72 max-w-xs mb-5 rounded-full"
                       />

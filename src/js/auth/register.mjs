@@ -36,13 +36,13 @@ const registerUser = async (url, data) => {
     console.log(json);
     // Alert for successful register
 
-    const alertMessage = document.querySelector(".alert-message");
-    alertMessage.style.display = "block";
+    const alertSuccessMessage = document.querySelector(".success-message");
+    alertSuccessMessage.style.display = "block";
 
     // Redirect to the top of the page after successful register
     setTimeout(() => {
       window.location.href = "../../../log-in/";
-    }, 2000);
+    }, 3000);
 
     // Returning the parsed JSON data
     return json;

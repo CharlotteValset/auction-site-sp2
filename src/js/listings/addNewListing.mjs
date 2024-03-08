@@ -13,6 +13,10 @@ export const createListing = async (event) => {
   // Prevent the default form submission behavior
   event.preventDefault();
 
+  const alertMessage = document.querySelector(".alert-message");
+  const alertErrorMessage = document.querySelector(".alert-error-message");
+  const alertSuccessMessage = document.querySelector(".success-message");
+
   // Retrieve the user token from localStorage
   const userToken = localStorage.getItem("accessToken");
 
@@ -28,7 +32,6 @@ export const createListing = async (event) => {
   // Check if required fields are filled
   if (!title || !mediaInput || !bidDeadlineDate) {
     // Display an alert if required fields are not filled
-    const alertMessage = document.querySelector(".alert-message");
     alertMessage.style.display = "block";
     return;
   }
@@ -64,8 +67,7 @@ export const createListing = async (event) => {
     // Check if the request was successful
     if (response.ok) {
       event.target.reset();
-
-      const alertSuccessMessage = document.querySelector(".success-message");
+      alertErrorMessage.style.display = "none";
       alertSuccessMessage.style.display = "block";
 
       // Redirect to the homepage
@@ -75,7 +77,6 @@ export const createListing = async (event) => {
 
       // If response status is 400, display alert message
     } else if (response.status === 400) {
-      const alertErrorMessage = document.querySelector(".alert-error-message");
       alertErrorMessage.style.display = "block";
     }
   } catch (error) {
