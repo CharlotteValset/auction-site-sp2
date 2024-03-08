@@ -1,5 +1,12 @@
 import decor from "../../../images/decor.png";
 
+/**
+ * Displays a success message indicating that the bid is confirmed and removes it after a brief delay.
+ *
+ * @example
+ * // Usage example:
+ * successMessage();
+ */
 export const successMessage = () => {
   const successMessageContainer = document.querySelector("#successMessage");
 
@@ -19,7 +26,7 @@ export const successMessage = () => {
   // Append the success message to the container
   successMessageContainer.appendChild(successMessage);
 
-  // Remove the success message after 5 seconds
+  // Remove the success message after 3 seconds
   setTimeout(() => {
     successMessage.remove();
   }, 3000);

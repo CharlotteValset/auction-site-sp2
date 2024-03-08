@@ -6,11 +6,17 @@ import {
 import { handleSuccessfulBid } from "./handleSuccessfulBid.mjs";
 import { makeBid } from "./makeBid.mjs";
 
-// Selecting the form element
 export const addBidToListingForm = document.querySelector("#addBid");
 const alertBidMessage = document.querySelector(".alert-Bid-message");
 
-// Event handler for form submission
+/**
+ * Handles the form submission event, adds a bid to the listing, and displays appropriate alerts.
+ *
+ * @param {Event} event - The form submission event.
+ * @example
+ * // Attach this function to the bid form's submit event
+ * addBidToListingForm.addEventListener("submit", addBidToListing);
+ */
 export const addBidToListing = async (event) => {
   // Prevent the default form submission behavior
   event.preventDefault();
@@ -26,6 +32,7 @@ export const addBidToListing = async (event) => {
   if (!amountNum) {
     // Display an alert if the required field is not filled
     alertBidMessage.style.display = "block";
+    alertBidErrorMessage.style.display = "none";
     return;
   }
 
@@ -33,7 +40,7 @@ export const addBidToListing = async (event) => {
     // Send a POST request to make a bid to the listing
     const response = await makeBid(userToken, { amount: amountNum });
 
-    // Check if the request was successful (status code 2xx)
+    // Check if the request was successful
     if (response.ok) {
       // Handle successful bid
       handleSuccessfulBid();
