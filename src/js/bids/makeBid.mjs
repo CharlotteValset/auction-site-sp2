@@ -1,6 +1,6 @@
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
 
-// Extracting the post ID from the URL query string
+// Extracting the listing ID from the URL query string
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");

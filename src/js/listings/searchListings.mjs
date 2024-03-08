@@ -36,7 +36,7 @@ const renderListings = (listing) => {
     noResultsMessage.innerText = `Search result "${searchTerm}" not found.`;
     resultMessageContainer.appendChild(noResultsMessage);
   } else {
-    // Render the posts
+    // Render the listings
     listing.forEach((data) => {
       // Create a card element for the current listing data
       const listingCard = listingsCard(data);
@@ -49,14 +49,14 @@ const renderListings = (listing) => {
 /**
  * Filter listings based on the provided search text and renders the filtered listings.
  *
- * @param {string} inputText The search text to filter posts.
+ * @param {string} inputText The search text to filter listings.
  * @example
  * filterListings(searchTerm);
  */
 const filterListings = (inputText) => {
   // Create a new array of listings that match the search criteria
   const filteredListings = listingsArray.filter((listing) => {
-    // Check if the lowercase version of post title/content/userName includes the lowercase search text
+    // Check if the lowercase version of listing title/content includes the lowercase search text
     const titleMatch = listing.title
       .toLowerCase()
       .includes(inputText.toLowerCase());
@@ -87,7 +87,7 @@ searchForm.addEventListener("submit", function (event) {
 });
 
 /**
- * Initializes the app by fetching posts and rendering them.
+ * Initializes the app by fetching listings and rendering them.
  * @throws {Error} - Throws an error if there's an issue during the fetch operation.
  */
 export const initialize = async () => {

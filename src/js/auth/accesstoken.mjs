@@ -17,7 +17,7 @@ export const getData = {
  * @returns {Promise<Object>} - A promise that resolves to the parsed JSON response.
  * @throws {Error} - Throws an error if an issue occurs during the fetch operation.
  * @example
- * const apiUrl = `${apiBaseUrl}${postsAPI}`;
+ * const apiUrl = `${apiBaseUrl}${listingsAPI}`;
  * try {
  *   const data = await fetchWithToken(apiUrl);
  * } catch (error) {

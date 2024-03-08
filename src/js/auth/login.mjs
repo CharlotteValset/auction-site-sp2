@@ -1,13 +1,25 @@
 import { apiBaseUrl, loginUrl } from "../variables.mjs";
 
 /**
- * Function to login an existing user
- * @param {string} url The URL to which the login request will be sent.
- * @param {Object} data The user data to be included in the login request.
- * @returns {Promise<Object>} The function returns a Promise, when Promise is fulfilled, it provides the parsed JSON response recieved from the server.
+ * Logs in an existing user by sending a POST request to the specified URL with user data.
+ *
+ * @async
+ * @param {string} url - The URL to which the login request will be sent (including the base API URL).
+ * @param {Object} data - The user data to be included in the login request.
+ * @returns {Promise<Object>} - A Promise that resolves to the parsed JSON response received from the server.
+ * @throws {Error} - Throws an error if an issue occurs during the fetch operation.
+ *
  * @example
+ * // Usage example:
  * const loginData = { email: "example@email.com", password: "password123" };
- * loginUser("https://example.com/api/login", loginData);
+ * try {
+ *   const response = await loginUser("https://example.com/api/login", loginData);
+ *   // Handle successful login response
+ *   console.log(response);
+ * } catch (error) {
+ *   // Handle login failure or fetch operation error
+ *   console.error(error.message);
+ * }
  */
 const loginUser = async (url, data) => {
   try {
@@ -62,9 +74,12 @@ const loginUser = async (url, data) => {
 const loginForm = document.querySelector("#login-form");
 
 /**
- * Function to handle the form submission and initiates the logion process.
- * @param {Event} event The form submission event
+ * Handles the form submission event, initiates the asynchronous login process,
+ * and clears input fields after a successful login attempt.
+ *
+ * @param {Event} event - The form submission event.
  * @example
+ * // Attach this function to the form's submit event
  * loginForm.addEventListener("submit", login);
  */
 const login = (event) => {
