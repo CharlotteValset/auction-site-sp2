@@ -13,12 +13,13 @@ let listingsArray = [];
 const API_URL = `${apiBaseUrl}${allListingsUrl}?_bids=true&_active=true&sort=created&limit=50`;
 
 /**
- * Renders all the listings in the selected container.
+ * Renders the listings based on the search results.
  *
- * @param {Object[]} listing An array of listings objects to be rendered.
+ * @param {Array} listing - The array of listings to be rendered.
  * @example
- * Assume filteredListings is an array of listings objects obtained through some filtering mechanism.
- * renderListings(filteredListings);
+ * // Usage example:
+ * const listingsData = [...]; // Array of listings data
+ * renderListings(listingsData);
  */
 const renderListings = (listing) => {
   const resultMessageContainer = document.querySelector("#resultMessage");
@@ -73,6 +74,7 @@ const filterListings = (inputText) => {
 const searchForm = document.getElementById("search-form");
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
+
   // Extracts and trims the search term from the input field.
   const searchInput = document.getElementById("search-input");
   const searchTerm = searchInput.value.trim();
@@ -95,11 +97,12 @@ export const initialize = async () => {
     // Fetch listings from the API
     listingsArray = await fetchWithToken(API_URL);
 
-    // Sort the listings by endsAt date in ascending order using sortAcs
+    // Sort the listings by endsAt date in ascending order using sortByEndDate function
     listingsArray = sortByEndDate(listingsArray);
     // Render the fetched listings
     renderListings(listingsArray);
   } catch (error) {
+    // Display error message if error
     listingsContainer.innerHTML = errorMessage;
     throw new Error("Error fetching listings:", error); // Re-throw the error if needed
   }

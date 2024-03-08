@@ -2,7 +2,7 @@ import placeholderImg from "../../../images/no_img.jpg";
 import { createCountdownTimer } from "../bids/bidCountdown.mjs";
 import { sortByAmountDesc } from "../utils/sortByAmountDesc.mjs";
 import { updateImageUrlFromDomains } from "../utils/updateImageUrls.mjs";
-
+import { handleImageError } from "../errorHandling/handleImageError.mjs";
 /**
  * Creates a card element for displaying listing information.
  *
@@ -41,9 +41,7 @@ export const listingsCard = (data) => {
   }
 
   // Handle image loading errors by using a placeholder
-  cardImage.onerror = function () {
-    cardImage.src = `${placeholderImg}`;
-  };
+  handleImageError(cardImage);
 
   cardHref.appendChild(cardImage);
 
