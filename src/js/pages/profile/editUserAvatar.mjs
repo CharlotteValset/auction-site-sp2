@@ -11,19 +11,17 @@ export const editAvatar = async (event) => {
   const userName = userProfileObject.name;
 
   const URL = `${apiBaseUrl}${profileUrl}${userName}/media`;
-  console.log("URL:", URL);
 
   // Get form input values
   const avatarUrl = event.target.querySelector("#profile-image-url");
-  console.log(avatarUrl);
-  // Create an object with edited post data
+
+  // Create an object with edited avatar data
   const editAvatarData = {
     avatar: avatarUrl.value,
   };
-  console.log(editAvatarData);
 
   try {
-    // Send a PUT request to update the post
+    // Send a PUT request to update the avatar image
     const response = await fetchWithToken(
       `${apiBaseUrl}${profileUrl}${userName}/media`,
       {
@@ -35,7 +33,7 @@ export const editAvatar = async (event) => {
         body: JSON.stringify(editAvatarData),
       },
     );
-    console.log("response:", response);
+
     // Check if the response indicates a successful update
     if (response.errors) {
       // Display an error message if the update was not successful

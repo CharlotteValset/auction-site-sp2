@@ -25,15 +25,13 @@ const registerUser = async (url, data) => {
       // Converting the user data to a JSON string and including it in the request body
       body: JSON.stringify(data),
     };
-    console.log(postData);
     // Sending the fetch request to the specified URL with the provided data
     const response = await fetch(url, postData);
 
-    console.log(response);
     // Parsing the response body as JSON
 
     const json = await response.json();
-    console.log(json);
+
     // Alert for successful register
 
     const alertSuccessMessage = document.querySelector(".success-message");

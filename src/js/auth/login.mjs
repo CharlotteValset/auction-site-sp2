@@ -22,10 +22,9 @@ const loginUser = async (url, data) => {
     };
     // Sending the fetch request to the specified URL with the provided data
     const response = await fetch(url, postData);
-    console.log("response", response);
+
     // Parsing the response body as JSON
     const json = await response.json();
-    console.log("JSON", json);
 
     if (json.accessToken) {
       // Storing the accessToken into local storage
@@ -79,7 +78,7 @@ const login = (event) => {
     email: email.value,
     password: password.value,
   };
-  console.log(user);
+
   // Calling the loginUser function to send the user data to the server
   loginUser(`${apiBaseUrl}${loginUrl}`, user);
 

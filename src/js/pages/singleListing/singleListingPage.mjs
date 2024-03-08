@@ -9,7 +9,7 @@ import { addBidToListingForm } from "../../bids/addBidToListing.mjs";
 import { handleImageError } from "../../errorHandling/handleImageError.mjs";
 import placeholderImg from "../../../../images/no_img.jpg";
 
-// Extracting the post ID from the URL query string
+// Extracting the listing ID from the URL query string
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
@@ -39,7 +39,6 @@ export const displaySingleListingsData = async () => {
   try {
     // Fetch listing data
     const data = await fetchSingleListing(id);
-    console.log("Listing-data:", data);
 
     document.title = `${data.title} | BidOnIt`;
 
@@ -183,7 +182,6 @@ export const displayUserCredit = async () => {
       const userProfileString = localStorage.getItem("userProfile");
       const userProfileObject = JSON.parse(userProfileString);
       const userName = userProfileObject.name;
-      console.log(userName);
 
       // Fetch user profile data
       const userData = await fetchUserData();

@@ -1,7 +1,7 @@
 //Imports
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
 
-// Get the form element for creating a new post
+// Get the form element for creating a new listing
 export const createListingForm = document.querySelector("#new-listing");
 
 /**
@@ -52,7 +52,7 @@ export const createListing = async (event) => {
   };
 
   try {
-    // Send a POST request to create a new post
+    // Send a POST request to create a new listing
     const response = await fetch(`${apiBaseUrl}${allListingsUrl}`, {
       method: "POST",
       headers: {
@@ -61,8 +61,6 @@ export const createListing = async (event) => {
       },
       body: JSON.stringify(newListing),
     });
-
-    console.log(response);
 
     // Check if the request was successful
     if (response.ok) {
