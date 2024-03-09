@@ -1,18 +1,30 @@
 import { apiBaseUrl, registerUrl } from "../variables.mjs";
 
 /**
- * Function to register a new user
- * @param {string} url The URL to which the registration request will be sent.
- * @param {Object} data The user data to be included in the registration request.
- * @returns {Promise<Object>} The function returns a Promise, when Promise is fulfilled, it provides the parsed JSON response received from the server.
+ * Registers a new user by sending a POST request to the specified URL with user data.
+ *
+ * @async
+ * @param {string} url - The URL to which the registration request will be sent (including the base API URL).
+ * @param {Object} data - The user data to be included in the registration request.
+ * @returns {Promise<Object>} - A Promise that resolves to the parsed JSON response received from the server.
+ * @throws {Error} - Throws an error if an issue occurs during the fetch operation.
+ *
  * @example
+ * // Usage example:
  * const userData = {
  *   name: "John Doe",
  *   email: "john.doe@example.com",
  *   password: "securepassword123",
  *   avatar: "https://example.com/avatar.jpg",
  * };
- * registerUser("https://example.com/api/register", userData);
+ * try {
+ *   const response = await registerUser("https://example.com/api/register", userData);
+ *   // Handle successful registration response
+ *   console.log(response);
+ * } catch (error) {
+ *   // Handle registration failure or fetch operation error
+ *   console.error(error.message);
+ * }
  */
 const registerUser = async (url, data) => {
   try {
@@ -25,27 +37,31 @@ const registerUser = async (url, data) => {
       // Converting the user data to a JSON string and including it in the request body
       body: JSON.stringify(data),
     };
-    console.log(postData);
     // Sending the fetch request to the specified URL with the provided data
     const response = await fetch(url, postData);
 
-    console.log(response);
     // Parsing the response body as JSON
-
     const json = await response.json();
-    console.log(json);
-    // Alert for successful register
 
+    // Selecting alert elements for success and error messages
+    const alertErrorMessage = document.querySelector(".alert-error-message");
     const alertSuccessMessage = document.querySelector(".success-message");
-    alertSuccessMessage.style.display = "block";
 
-    // Redirect to the top of the page after successful register
-    setTimeout(() => {
-      window.location.href = "../../../log-in/";
-    }, 3000);
+    if (json.errors) {
+      // Displaying an error alert if the registration was unsuccessful
+      alertErrorMessage.style.display = "block";
+    } else {
+      // Displaying a success alert and redirecting after a successful registration
+      alertSuccessMessage.style.display = "block";
+      alertErrorMessage.style.display = "none";
 
-    // Returning the parsed JSON data
-    return json;
+      setTimeout(() => {
+        window.location.href = "../../../log-in/";
+      }, 3000);
+
+      // Returning the parsed JSON data
+      return json;
+    }
   } catch (error) {
     // Handling any errors that may occur during the fetch operation
     throw new Error(error, "Error happened");
@@ -56,14 +72,18 @@ const registerUser = async (url, data) => {
 const registerForm = document.querySelector("#register-form");
 
 /**
- * Function to handle the form submission event and register a new user.
- * @param {Event} event The form submission event
+ * Handles the form submission event, initiates the user registration process,
+ * and clears input fields after the registration attempt.
+ *
+ * @param {Event} event - The form submission event.
  * @example
+ * // Attach this function to the form's submit event
  * registerForm.addEventListener("submit", register);
  */
 const register = (event) => {
   // Preventing the default form submission behavior to handle it manually
   event.preventDefault();
+
   // Destructuring the form elements to get values for name, email, and password
   const [name, email, password, avatar] = event.target.elements;
 

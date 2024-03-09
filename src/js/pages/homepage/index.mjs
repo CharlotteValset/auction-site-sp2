@@ -18,15 +18,12 @@ notLoggedInNavBar.forEach((element) => {
   isLoggedOut(token, element);
 });
 
-// Initial call to display blog cards
 displayAllListings();
 
-// Call the initialize function to start the app
-initialize();
-
-logOutButton.addEventListener("click", logout);
-
-// Add an event listener to the form for the submit event
 if (token) {
   createListingForm.addEventListener("submit", createListing);
 }
+
+initialize();
+
+logOutButton.addEventListener("click", logout);

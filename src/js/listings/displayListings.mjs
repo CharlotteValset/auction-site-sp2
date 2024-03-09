@@ -12,9 +12,12 @@ export const errorMessage = createMessage("error");
 let loadingListings = false;
 
 /**
- * Displays listings cards by fetching and rendering listings.
+ * Fetches and displays all listings sorted by end date.
  *
- * @throws {Error} - Throws an error if there's an issue during the fetch operation.
+ * @throws {Error} - Throws an error if there is an issue during the fetch operation or listing display.
+ * @example
+ * // Usage example:
+ * displayAllListings();
  */
 export const displayAllListings = async () => {
   try {
@@ -32,10 +35,8 @@ export const displayAllListings = async () => {
     // Fetch listings
     const listings = await fetchAllListings();
 
-    // Sort the listings by endsAt date using your sortAcs function
+    // Sort the listings by endsAt date using sortByEndDate function
     const sortedListings = sortByEndDate(listings);
-
-    console.log("sortedListings", sortedListings);
 
     // Clear existing cards from the container
     listingsContainer.innerHTML = "";

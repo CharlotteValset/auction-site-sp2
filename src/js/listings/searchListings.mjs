@@ -13,12 +13,13 @@ let listingsArray = [];
 const API_URL = `${apiBaseUrl}${allListingsUrl}?_bids=true&_active=true&sort=created&limit=50`;
 
 /**
- * Renders all the listings in the selected container.
+ * Renders the listings based on the search results.
  *
- * @param {Object[]} listing An array of listings objects to be rendered.
+ * @param {Array} listing - The array of listings to be rendered.
  * @example
- * Assume filteredListings is an array of listings objects obtained through some filtering mechanism.
- * renderListings(filteredListings);
+ * // Usage example:
+ * const listingsData = [...]; // Array of listings data
+ * renderListings(listingsData);
  */
 const renderListings = (listing) => {
   const resultMessageContainer = document.querySelector("#resultMessage");
@@ -36,7 +37,7 @@ const renderListings = (listing) => {
     noResultsMessage.innerText = `Search result "${searchTerm}" not found.`;
     resultMessageContainer.appendChild(noResultsMessage);
   } else {
-    // Render the posts
+    // Render the listings
     listing.forEach((data) => {
       // Create a card element for the current listing data
       const listingCard = listingsCard(data);
@@ -49,14 +50,14 @@ const renderListings = (listing) => {
 /**
  * Filter listings based on the provided search text and renders the filtered listings.
  *
- * @param {string} inputText The search text to filter posts.
+ * @param {string} inputText The search text to filter listings.
  * @example
  * filterListings(searchTerm);
  */
 const filterListings = (inputText) => {
   // Create a new array of listings that match the search criteria
   const filteredListings = listingsArray.filter((listing) => {
-    // Check if the lowercase version of post title/content/userName includes the lowercase search text
+    // Check if the lowercase version of listing title/content includes the lowercase search text
     const titleMatch = listing.title
       .toLowerCase()
       .includes(inputText.toLowerCase());
@@ -73,6 +74,7 @@ const filterListings = (inputText) => {
 const searchForm = document.getElementById("search-form");
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
+
   // Extracts and trims the search term from the input field.
   const searchInput = document.getElementById("search-input");
   const searchTerm = searchInput.value.trim();
@@ -87,7 +89,7 @@ searchForm.addEventListener("submit", function (event) {
 });
 
 /**
- * Initializes the app by fetching posts and rendering them.
+ * Initializes the app by fetching listings and rendering them.
  * @throws {Error} - Throws an error if there's an issue during the fetch operation.
  */
 export const initialize = async () => {
@@ -95,11 +97,12 @@ export const initialize = async () => {
     // Fetch listings from the API
     listingsArray = await fetchWithToken(API_URL);
 
-    // Sort the listings by endsAt date in ascending order using sortAcs
+    // Sort the listings by endsAt date in ascending order using sortByEndDate function
     listingsArray = sortByEndDate(listingsArray);
     // Render the fetched listings
     renderListings(listingsArray);
   } catch (error) {
+    // Display error message if error
     listingsContainer.innerHTML = errorMessage;
     throw new Error("Error fetching listings:", error); // Re-throw the error if needed
   }

@@ -1,18 +1,24 @@
 //Imports
 import { apiBaseUrl, allListingsUrl } from "../variables.mjs";
 
-// Get the form element for creating a new post
+// Get the form element for creating a new listing
 export const createListingForm = document.querySelector("#new-listing");
 
 /**
  * Handles the form submission to create a new listing.
+ *
  * @param {Event} event - The form submission event.
- * @returns {Promise<void>} - A promise that resolves when the listing creation is complete.
+ * @throws {Error} - Throws an error with a detailed message if an issue occurs during the listing creation process.
+ * @example
+ * // Usage example:
+ * const listingForm = document.getElementById("listing-form");
+ * listingForm.addEventListener("submit", createListing);
  */
 export const createListing = async (event) => {
   // Prevent the default form submission behavior
   event.preventDefault();
 
+  // Select alert message elements
   const alertMessage = document.querySelector(".alert-message");
   const alertErrorMessage = document.querySelector(".alert-error-message");
   const alertSuccessMessage = document.querySelector(".success-message");
@@ -36,6 +42,7 @@ export const createListing = async (event) => {
     return;
   }
 
+  // Collect media URLs from the input fields
   const media = [];
 
   mediaInput.forEach(function (input) {
@@ -44,6 +51,7 @@ export const createListing = async (event) => {
     }
   });
 
+  // Create a new listing object with the collected data
   const newListing = {
     title: title,
     description: description,
@@ -52,7 +60,7 @@ export const createListing = async (event) => {
   };
 
   try {
-    // Send a POST request to create a new post
+    // Send a POST request to create a new listing
     const response = await fetch(`${apiBaseUrl}${allListingsUrl}`, {
       method: "POST",
       headers: {
@@ -62,15 +70,14 @@ export const createListing = async (event) => {
       body: JSON.stringify(newListing),
     });
 
-    console.log(response);
-
     // Check if the request was successful
     if (response.ok) {
+      // Reset the form and display success message, remove alertErrorMessage if displayed
       event.target.reset();
       alertErrorMessage.style.display = "none";
       alertSuccessMessage.style.display = "block";
 
-      // Redirect to the homepage
+      // Redirect to the homepage after 2 seconds
       setTimeout(() => {
         window.location.href = "/index.html";
       }, 2000);
