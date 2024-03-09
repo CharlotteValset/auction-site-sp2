@@ -7,7 +7,7 @@
  * const formattedDate = formatDateString(timestamp);
  */
 export const formatDateString = (timestamp) => {
-  // Array of month names
+  // Array of month in numbers
   const months = [
     "01",
     "02",

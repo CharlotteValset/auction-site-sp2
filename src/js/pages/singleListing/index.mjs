@@ -37,7 +37,5 @@ notLoggedInNavBar.forEach((element) => {
 });
 
 createListingForm.addEventListener("submit", createListing);
-
 addBidToListingForm.addEventListener("submit", addBidToListing);
-
 logOutButton.addEventListener("click", logout);
