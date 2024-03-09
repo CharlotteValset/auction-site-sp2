@@ -36,10 +36,8 @@ notLoggedInNavBar.forEach((element) => {
   isLoggedOut(token, element);
 });
 
-// Event listener to the form for the submit event
 createListingForm.addEventListener("submit", createListing);
 
-// Event listener to the form for the submit event
 addBidToListingForm.addEventListener("submit", addBidToListing);
 
 logOutButton.addEventListener("click", logout);
