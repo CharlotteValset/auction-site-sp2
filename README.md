@@ -22,6 +22,30 @@ I designed the user interface and wireframes using Figma, and subsequently devel
 
 ### Installing
 
+1. Clone the repo:
+
+```bash
+gh repo clone CharlotteValset/auction-site-sp2
+```
+
+2. Install:
+
+```bash
+npm i
+```
+
+3. Run the dev server
+
+```bash
+npm run dev
+```
+
+4. Build the project for production
+
+```bash
+npm run build
+```
+
 ## Contributing
 
 If you'd like to get involved in the project, please consider one of the following options:
