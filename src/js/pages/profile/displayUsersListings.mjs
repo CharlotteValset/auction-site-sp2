@@ -3,14 +3,25 @@ import { fetchWithToken } from "../../auth/accesstoken.mjs";
 import { createMessage } from "../../errorHandling/errorMessage.mjs";
 import { listingsCard } from "../../components/listingCard.mjs";
 import { sortByEndDate } from "../../utils/sortByEndDate.mjs";
+
 // Retrieve user profile information from localStorage
 const user = JSON.parse(localStorage.getItem("userProfile"));
 
+/**
+ * Fetches the listings associated with the currently logged-in user.
+ *
+ * @returns {Promise<Response>} A Promise that resolves with the response from the server, containing user's listings.
+ * @throws {Error} Throws an error if there is an issue fetching the user's listings.
+ * @example
+ * // Usage example:
+ * const userlistings = await fetchUsersListings();
+ */
 export const fetchUsersListings = async () => {
   return await fetchWithToken(
     `${apiBaseUrl}${profileUrl}${user.name}/listings?_bids=true&_active=true`,
   );
 };
+
 // Targeting DOM elements
 const loaderContainer = document.querySelector(".loader-container");
 const noListingsContainer = document.querySelector(
@@ -26,6 +37,8 @@ let loadingListings = false;
  * Displays listings cards by fetching and rendering listings.
  *
  * @throws {Error} - Throws an error if there's an issue during the fetch operation.
+ * // Usage example:
+ * await displayUserListings();
  */
 export const displayUserListings = async () => {
   try {
@@ -43,7 +56,7 @@ export const displayUserListings = async () => {
     // Fetch listings
     const listings = await fetchUsersListings();
 
-    // Sort the listings by endsAt date using your sortAcs function
+    // Sort the listings by endsAt date using sortByEndDate function
     const sortedListings = sortByEndDate(listings);
 
     // Clear existing cards from the container
@@ -57,6 +70,7 @@ export const displayUserListings = async () => {
       listingsContainer.appendChild(listingCard);
     });
 
+    // Display a message if the user has not added any listings
     if (sortedListings == 0) {
       const infotext = document.createElement("p");
       infotext.className =

@@ -7,6 +7,15 @@ import { listingsCard } from "../../components/listingCard.mjs";
 // Retrieve user profile information from localStorage
 const user = JSON.parse(localStorage.getItem("userProfile"));
 
+/**
+ * Fetches the winning data for the currently logged-in user.
+ *
+ * @returns {Promise<Object>} A Promise that resolves to the winning data fetched for the user.
+ * @throws {Error} Throws an error if there is an issue fetching the user's winning data.
+ * @example
+ * // Usage example:
+ * const userWinsData = await fetchUserWins();
+ */
 export const fetchUserWins = async () => {
   return await fetchWithToken(
     `${apiBaseUrl}${profileUrl}${user.name}`,
@@ -28,9 +37,12 @@ const errorMessage = createMessage("error");
 let loadingUserWinsOnListings = false;
 
 /**
- * Displays listings cards by fetching and rendering listings.
+ * Displays the user's winning listings on the UI.
  *
- * @throws {Error} - Throws an error if there's an issue during the fetch operation.
+ * @throws {Error} Throws an error if there is an issue fetching or displaying user's winning listings.
+ * @example
+ * // Usage example:
+ * await displayUserWins();
  */
 export const displayUserWins = async () => {
   try {

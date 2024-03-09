@@ -3,7 +3,6 @@ import { apiBaseUrl, loginUrl } from "../variables.mjs";
 /**
  * Logs in an existing user by sending a POST request to the specified URL with user data.
  *
- * @async
  * @param {string} url - The URL to which the login request will be sent (including the base API URL).
  * @param {Object} data - The user data to be included in the login request.
  * @returns {Promise<Object>} - A Promise that resolves to the parsed JSON response received from the server.

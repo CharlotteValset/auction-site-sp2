@@ -1,15 +1,29 @@
 import { apiBaseUrl, profileUrl } from "../../variables.mjs";
 import { fetchWithToken, token } from "../../auth/accesstoken.mjs";
 
+/**
+ * Handles the form submission to edit the user's avatar.
+ *
+ * @param {Event} event - The form submission event.
+ * @throws {Error} Throws an error if there is an issue updating the user's avatar.
+ * @example
+ * // Usage example:
+ * const editAvatarForm = document.querySelector("#edit-avatar-form");
+ * editAvatarForm.addEventListener("submit", editAvatar);
+ */
 export const editAvatar = async (event) => {
   // Prevent the form from submitting normally
   event.preventDefault();
 
+  // Select the alert message element for potential error display
   const alertErrorMessage = document.querySelector(".alert-error-message");
+
+  // Retrieve user profile data from local storage
   const userProfileString = localStorage.getItem("userProfile");
   const userProfileObject = JSON.parse(userProfileString);
   const userName = userProfileObject.name;
 
+  // Construct the URL for updating user's avatar
   const URL = `${apiBaseUrl}${profileUrl}${userName}/media`;
 
   // Get form input values
@@ -22,17 +36,14 @@ export const editAvatar = async (event) => {
 
   try {
     // Send a PUT request to update the avatar image
-    const response = await fetchWithToken(
-      `${apiBaseUrl}${profileUrl}${userName}/media`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(editAvatarData),
+    const response = await fetchWithToken(`${URL}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-    );
+      body: JSON.stringify(editAvatarData),
+    });
 
     // Check if the response indicates a successful update
     if (response.errors) {

@@ -8,7 +8,6 @@ const id = params.get("id");
 /**
  * Makes a bid on a listing by sending a POST request to the server.
  *
- * @async
  * @param {string} userToken - The user's authentication token.
  * @param {Object} dataObj - The bid data to be included in the request body.
  * @returns {Promise<Response>} - A Promise that resolves to the fetch response.
